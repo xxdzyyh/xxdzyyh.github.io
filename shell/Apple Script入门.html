@@ -911,7 +911,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#&#x5E38;&#x7528;&#x8BED;&#x53E5;"><b></b>&#x5E38;&#x7528;&#x8BED;&#x53E5;</a></li></ul><li><span class="title-icon "></span><a href="#applescript-&#x548C;-shell-&#x4EA4;&#x4E92;"><b></b>AppleScript &#x548C; shell &#x4EA4;&#x4E92;</a></li><ul><li><span class="title-icon "></span><a href="#&#x76F8;&#x4E92;&#x8C03;&#x7528;"><b></b>&#x76F8;&#x4E92;&#x8C03;&#x7528;</a></li><li><span class="title-icon "></span><a href="#&#x4F20;&#x503C;"><b></b>&#x4F20;&#x503C;</a></li></ul><li><span class="title-icon "></span><a href="#&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;"><b></b>&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><ul>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#&#x5E38;&#x7528;&#x8BED;&#x53E5;"><b></b>&#x5E38;&#x7528;&#x8BED;&#x53E5;</a></li></ul><li><span class="title-icon "></span><a href="#applescript-&#x548C;-shell-&#x4EA4;&#x4E92;"><b></b>AppleScript &#x548C; shell &#x4EA4;&#x4E92;</a></li><ul><li><span class="title-icon "></span><a href="#&#x76F8;&#x4E92;&#x8C03;&#x7528;"><b></b>&#x76F8;&#x4E92;&#x8C03;&#x7528;</a></li><li><span class="title-icon "></span><a href="#&#x4F20;&#x503C;"><b></b>&#x4F20;&#x503C;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><ul>
 <li>&#x5E73;&#x53F0;&#xFF1A;Mac OS</li>
 <li>&#x5DE5;&#x5177;&#xFF1A;&#x811A;&#x672C;&#x7F16;&#x8F91;&#x5668;</li>
 <li><a href="https://help.apple.com/applescript/mac/10.9/" target="_blank">AppleScript &#x5E2E;&#x52A9;</a></li>
@@ -921,48 +921,55 @@
 <blockquote>
 <p>hello world</p>
 </blockquote>
-<pre><code>say &quot;hello world&quot;
+<pre><code class="lang-shell">say &quot;hello world&quot;
 beep 2
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>&#x53D8;&#x91CF;</p>
 </blockquote>
-<pre><code>set a to {1, 2}
+<pre><code class="lang-shell">set a to {1, 2}
 # &#x6B64;&#x5904;&#x62A5;&#x9519;&#xFF0C;a&#x4E0D;&#x80FD;&#x8F6C;&#x6210;&#x5B57;&#x7B26;&#x4E32;
 say a
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>dialog</p>
 </blockquote>
-<pre><code>set message to &quot;Dialog Message&quot;
+<pre><code class="lang-shell">set message to &quot;Dialog Message&quot;
 set temp to display dialog message buttons {&quot;OK&quot;, &quot;Cancel&quot;}
 set selectedTitle to button returned of temp
 display dialog &quot;You pressed the following button &quot; &amp; selectedTitle
-</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1324053-2fc7aba2f03bfddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="dialog_1"></p>
+</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/1324053-2fc7aba2f03bfddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="dialog_1"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1324053-3982521bc6898b98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="dialog_2"></p>
 <blockquote>
 <p>&#x6E05;&#x7A7A;&#x5E9F;&#x7EB8;&#x7BD3;</p>
 </blockquote>
-<pre><code>tell application &quot;Finder&quot;
+<pre><code class="lang-shell">tell application &quot;Finder&quot;
     empty trash
 end tell
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>&#x5217;&#x8868;&#x9009;&#x62E9;&#x5668;</p>
 </blockquote>
-<pre><code>choose from list {&quot;dawei&quot;, &quot;libai&quot;, &quot;lilei&quot;} with title &quot;&#x540D;&#x5B57;&#x9009;&#x62E9;&#x5668;&quot; with prompt &quot;&#x8BF7;&#x9009;&#x62E9;&#x540D;&#x79F0;&quot; default items {&quot;lilei&quot;} with empty selection allowed and multiple selections allowed
-</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1324053-1bb7ded49fc47087.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="&#x81EA;&#x5B9A;&#x4E49;&#x5185;&#x5BB9;&#x9009;&#x62E9;.png"></p>
+<pre><code class="lang-shell">choose from list {&quot;dawei&quot;, &quot;libai&quot;, &quot;lilei&quot;} with title &quot;&#x540D;&#x5B57;&#x9009;&#x62E9;&#x5668;&quot; with prompt &quot;&#x8BF7;&#x9009;&#x62E9;&#x540D;&#x79F0;&quot; default items {&quot;lilei&quot;} with empty selection allowed and multiple selections allowed
+</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/1324053-1bb7ded49fc47087.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="&#x81EA;&#x5B9A;&#x4E49;&#x5185;&#x5BB9;&#x9009;&#x62E9;.png"></p>
 <p>&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x5668;</p>
-<pre><code># choose folder &#x9009;&#x62E9;&#x6587;&#x4EF6;&#x5939;
+<pre><code class="lang-shell"># choose folder &#x9009;&#x62E9;&#x6587;&#x4EF6;&#x5939;
 choose file of type (&quot;txt&quot;) with prompt &quot;&#x9009;&#x53D6;&#x6587;&#x4EF6;&quot;
-</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1324053-91bd6fb9bb04fe30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x5668;"></p>
+</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/1324053-91bd6fb9bb04fe30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x5668;"></p>
 <h2 id="applescript-&#x548C;-shell-&#x4EA4;&#x4E92;"><a name="applescript-&#x548C;-shell-&#x4EA4;&#x4E92;" class="anchor-navigation-ex-anchor" href="#applescript-&#x548C;-shell-&#x4EA4;&#x4E92;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="applescript-&#x548C;-shell-&#x4EA4;&#x4E92;" class="plugin-anchor" href="#applescript-&#x548C;-shell-&#x4EA4;&#x4E92;"><i class="fa fa-link" aria-hidden="true"></i></a>AppleScript &#x548C; shell &#x4EA4;&#x4E92;</h2>
 <h3 id="&#x76F8;&#x4E92;&#x8C03;&#x7528;"><a name="&#x76F8;&#x4E92;&#x8C03;&#x7528;" class="anchor-navigation-ex-anchor" href="#&#x76F8;&#x4E92;&#x8C03;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x76F8;&#x4E92;&#x8C03;&#x7528;" class="plugin-anchor" href="#&#x76F8;&#x4E92;&#x8C03;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76F8;&#x4E92;&#x8C03;&#x7528;</h3>
 <blockquote>
 <p>AppleScript &#x8C03;&#x7528;shell</p>
 </blockquote>
-<pre><code>do shell script &quot;cd ~;ls&quot;
-</code></pre><blockquote>
+<pre><code class="lang-sh"><span class="hljs-keyword">do</span> shell script <span class="hljs-string">&quot;cd ~;ls&quot;</span>
+</code></pre>
+<blockquote>
 <p>shell &#x8C03;&#x7528; AppleScript</p>
 </blockquote>
-<pre><code># osascript -e &quot;&#x8BED;&#x53E5;&quot;
+<pre><code class="lang-shell"># osascript -e &quot;&#x8BED;&#x53E5;&quot;
 finder=`osascript -e &quot;set dir to POSIX path of (choose folder with prompt \&quot;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;\&quot;)&quot;`
 # &#x8F93;&#x51FA;&#x7ED3;&#x679C;/Users/xiaoniu/Documents/XXXX/
 echo $finder
@@ -986,34 +993,39 @@ EOF
 # &#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#x4F20;&#x503C;&#x95EE;&#x9898;&#xFF0C;path&#x662F;shell&#x91CC;&#x9762;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x4E2A;osascript&#x8BED;&#x53E5;&#xFF0C;&#x52A0;&#x4E86;&quot;&quot;.
 
 echo &quot;
-</code></pre><h3 id="&#x4F20;&#x503C;"><a name="&#x4F20;&#x503C;" class="anchor-navigation-ex-anchor" href="#&#x4F20;&#x503C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4F20;&#x503C;" class="plugin-anchor" href="#&#x4F20;&#x503C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F20;&#x503C;</h3>
+</code></pre>
+<h3 id="&#x4F20;&#x503C;"><a name="&#x4F20;&#x503C;" class="anchor-navigation-ex-anchor" href="#&#x4F20;&#x503C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x4F20;&#x503C;" class="plugin-anchor" href="#&#x4F20;&#x503C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F20;&#x503C;</h3>
 <blockquote>
 <p>AppleScript -&gt; shell</p>
 </blockquote>
 <p>&#x5982;&#x679C;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; &amp; &#x8FDB;&#x884C;&#x62FC;&#x63A5;&#x3002;</p>
-<pre><code>set hostname to &quot;www.baidu.com&quot;
+<pre><code class="lang-shell">set hostname to &quot;www.baidu.com&quot;
 
 do shell script &quot;ping -c1 &quot; &amp; hostname
-</code></pre><p>&#x66F4;&#x901A;&#x7528;&#x7684;&#x662F; quoted form of</p>
-<pre><code># quoted form of
+</code></pre>
+<p>&#x66F4;&#x901A;&#x7528;&#x7684;&#x662F; quoted form of</p>
+<pre><code class="lang-shell"># quoted form of
 set hostname to &quot;www.baidu.com&quot;
 
 do shell script &quot;ping -c1 &quot; &amp; quoted form of hostname
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>shell -&gt; AppleScript</p>
 </blockquote>
-<pre><code>path=`pwd`
+<pre><code class="lang-shell">path=`pwd`
 osascript &lt;&lt;EOF
 set a to  POSIX file &quot;$path&quot;
-</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/1324053-a8805b7af6659e25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="shell &#x8C03;&#x7528; AppleScript"></p>
+</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/1324053-a8805b7af6659e25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt="shell &#x8C03;&#x7528; AppleScript"></p>
 <p>&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;shell &#x9700;&#x8981;&#x83B7;&#x53D6;Apple Script&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;</p>
-<pre><code>finder=`osascript -e &quot;set dir to POSIX path of (choose folder with prompt \&quot;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;\&quot;)&quot;`
+<pre><code class="lang-shell">finder=`osascript -e &quot;set dir to POSIX path of (choose folder with prompt \&quot;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;\&quot;)&quot;`
 # &#x8F93;&#x51FA;&#x7ED3;&#x679C;/Users/xiaoniu/Documents/XXXX/
 echo $finder
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>&#x8DEF;&#x5F84;&#x8F6C;&#x6362;</p>
 </blockquote>
-<pre><code>set p to &quot;/usr/local/bin/&quot; 
+<pre><code class="lang-shell">set p to &quot;/usr/local/bin/&quot; 
 set a to POSIX file p 
    -- file &quot;Macintosh HD:usr:local:bin:&quot;
 
@@ -1022,47 +1034,8 @@ To translate an AppleScript path (file or directory, valid or not) into a POSIX 
 set a to &quot;Macintosh HD:usr:local:bin:&quot; 
 set p to POSIX path of a 
    -- &quot;/usr/local/bin/&quot;
-</code></pre><h2 id="&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;"><a name="&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;" class="anchor-navigation-ex-anchor" href="#&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;" class="plugin-anchor" href="#&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;</h2>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
-&lt;plist version=&quot;1.0&quot;&gt;
-  &lt;dict&gt;
-    &lt;!-- &#x540D;&#x79F0;&#xFF0C;&#x8981;&#x5168;&#x5C40;&#x552F;&#x4E00; --&gt;
-    &lt;key&gt;Label&lt;/key&gt;
-    &lt;string&gt;com.feng.record&lt;/string&gt;
-    &lt;!-- &#x547D;&#x4EE4;&#xFF0C; &#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x547D;&#x4EE4;&#xFF0C;&#x5176;&#x5B83;&#x4E3A;&#x53C2;&#x6570;--&gt;
-    &lt;key&gt;ProgramArguments&lt;/key&gt;
-    &lt;array&gt;
-        &lt;string&gt;osascript&lt;/string&gt;
-      &lt;string&gt;~/Documents/record.scpt&lt;/string&gt;
-    &lt;/array&gt;
-    &lt;!-- &#x8FD0;&#x884C;&#x65F6;&#x95F4; --&gt;
-    &lt;key&gt;StartCalendarInterval&lt;/key&gt;
-    &lt;dict&gt;
-      &lt;key&gt;Minute&lt;/key&gt;
-      &lt;integer&gt;0&lt;/integer&gt;
-      &lt;key&gt;Hour&lt;/key&gt;
-      &lt;integer&gt;18&lt;/integer&gt;
-    &lt;/dict&gt;
-    &lt;!-- &#x6807;&#x51C6;&#x8F93;&#x5165;&#x6587;&#x4EF6; --&gt;
-    &lt;key&gt;StandardInPath&lt;/key&gt;
-    &lt;string&gt;~/Documents/MyAppleScript/in.log&lt;/string&gt;
-    &lt;!-- &#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6587;&#x4EF6; --&gt;
-    &lt;key&gt;StandardOutPath&lt;/key&gt;
-    &lt;string&gt;~/Documents/MyAppleScript/out.log&lt;/string&gt;
-    &lt;!-- &#x6807;&#x51C6;&#x9519;&#x8BEF;&#x8F93;&#x51FA;&#x6587;&#x4EF6; --&gt;
-    &lt;key&gt;StandardErrorPath&lt;/key&gt;
-    &lt;string&gt;~/Documents/MyAppleScript/err.log&lt;/string&gt;
-  &lt;/dict&gt;
-&lt;/plist&gt;
-</code></pre><pre><code>$ plutil -lint xxx.plist
-$ launchctl load ~/Library/LaunchAgents/18.plist
-</code></pre><p>&#x6BCF;&#x5929;18&#xFF1A;00&#x6267;&#x884C;&#x811A;&#x672C;~/Documents/record.scpt&#xFF0C;&#x81F3;&#x4E8E;&#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x91CC;&#x5199;&#x4EC0;&#x4E48;&#x5C31;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x53D1;&#x6325;&#x4E86;&#x3002;</p>
-<pre><code># record.scpt
-# &#x8BED;&#x97F3; + &#x5F39;&#x7A97; &#x63D0;&#x9192;&#x6253;&#x5361;
-say &quot;&#x5FEB;&#x53BB;&#x6253;&#x5361;&#xFF0C;&#x5FD8;&#x8BB0;&#x6253;&#x5361;&#x5C31;&#x4E0D;&#x597D;&#x4E86;&#xFF01;&quot;
-display dialog &quot;&#x5FEB;&#x53BB;&#x6253;&#x5361;&#xFF0C;&#x5FD8;&#x8BB0;&#x6253;&#x5361;&#x5C31;&#x4E0D;&#x597D;&#x4E86;&#xFF01;&quot; buttons {&quot;&#x4E86;&#x89E3;&quot;}
 </code></pre>
+
                                 
                                 </section>
                             
@@ -1105,7 +1078,7 @@ display dialog &quot;&#x5FEB;&#x53BB;&#x6253;&#x5361;&#xFF0C;&#x5FD8;&#x8BB0;&#x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Apple Script入门","level":"1.4.11","depth":2,"next":{"title":"Apple Script操作其他应用","level":"1.4.12","depth":2,"path":"shell/AppleScript操作其他应用.md","ref":"shell/AppleScript操作其他应用.md","articles":[]},"previous":{"title":"Oh-My-Zsh","level":"1.4.10","depth":2,"path":"shell/Mac Oh-My-Zsh.md","ref":"shell/Mac Oh-My-Zsh.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"shell/Apple Script入门.md","mtime":"2019-10-11T02:17:58.296Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-11T02:32:07.756Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Apple Script入门","level":"1.4.11","depth":2,"next":{"title":"Apple Script操作其他应用","level":"1.4.12","depth":2,"path":"shell/AppleScript操作其他应用.md","ref":"shell/AppleScript操作其他应用.md","articles":[]},"previous":{"title":"Oh-My-Zsh","level":"1.4.10","depth":2,"path":"shell/Mac Oh-My-Zsh.md","ref":"shell/Mac Oh-My-Zsh.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"shell/Apple Script入门.md","mtime":"2019-10-11T03:21:07.253Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-11T03:21:52.554Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

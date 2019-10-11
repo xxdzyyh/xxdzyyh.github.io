@@ -1,0 +1,146 @@
+I"?<p>工厂模式主要解决对象创建问题，有明确的创建规则(switch)，但是具体创建那个，需要客户端提供一些信息。</p>
+
+<h3 id="简单工厂模式">简单工厂模式</h3>
+
+<p>简单工厂模式不属于23中设计模式，但是思路上和工厂模式其实没有区别。依据客户端提供的信息进行创建，一层switch</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Product {
+    var name = ""
+}
+    
+class AXN : Product {
+    override init() {
+        super.init()
+        name = "AXN"
+    }
+}
+
+class YXN : Product {
+    override init() {
+        super.init()
+        name = "YXN"
+    }
+}
+
+class MainVC {
+
+    func afterReqeust(productType: String) {
+        var product : Product 
+        
+        if productType == "AXN" {
+            product = AXN()
+        } else if productType == "YXN" {
+            product = YXN()
+        } else {
+            product = Product()
+        }
+        print("\(product.name)")
+    }
+}
+
+let mainVC = MainVC()
+
+mainVC.afterReqeust(productType: "AXN")
+mainVC.afterReqeust(productType: "YXN")
+</code></pre></div></div>
+
+<p>对于 MainVC 而言，是否一定要知道 Product 的具体类型呢？如果不是的话，就可以隐藏这些信息，返回一个抽象接口，没有必要在MainVC中处理创建逻辑。如果是的话，可以先试试提供一个接口，让Product实现这个接口，让MainVC依赖接口。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ProductFactory {
+    class func productWithType(_ productType: String) -&gt; Product {
+        var product : Product
+        
+        if productType == "AXN" {
+            product = AXN()
+        } else if productType == "YXN" {
+            product = YXN()
+        } else {
+            product = Product()
+        }
+        
+        return product
+    }
+}
+    
+class MainVC {
+    func afterReqeust(productType: String) {
+        let product : Product = ProductFactory.productWithType(productType)
+
+        print("\(product.name)")
+    }
+}
+</code></pre></div></div>
+
+<p>后续如果添加或者删除产品，只用修改ProductFactory，不需要再动MainVC。</p>
+
+<h3 id="工厂模式">工厂模式</h3>
+
+<p>如果产品比较复杂，比如 YXN 又分为 YXN-1,YXN-2 等，可以创建一个 YXNFactory，用来隐藏 YXN 这种 product 的创建细节，2层switch</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class YXNSpecial : Product {
+    override init() {
+        super.init()
+        
+        name = "YXN"
+    }
+}
+
+class ProductFactory {
+    
+    class func productWithType(_ productType: String) -&gt; Product {
+        return Product()
+    }
+}
+
+class YXNFactory : ProductFactory {
+   
+    override class func productWithType(_ productType: String) -&gt; Product {
+        switch productType {
+        case "YXN":
+            return YXN()
+        case "Special":
+            return YXNSpecial()
+        default:
+            return YXN();
+        }
+        
+    }
+}
+
+class AXNFactory : ProductFactory {
+    
+    override class func productWithType(_ productType: String) -&gt; Product {
+        return AXN()
+    }
+}
+
+class MainVC {
+
+    func afterReqeust(productType: String) {
+        var productFactory : ProductFactory.Type
+        var product : Product
+        
+        
+        if productType == "AXN" {
+            productFactory = AXNFactory.self
+            product = productFactory.productWithType("AXN")
+        } else {
+            productFactory = YXNFactory.self
+            product = productFactory.productWithType("")
+        }
+        
+        print("\(product.name)")
+    }
+}
+
+let mainVC = MainVC()
+
+mainVC.afterReqeust(productType: "AXN")
+mainVC.afterReqeust(productType: "YXN")
+</code></pre></div></div>
+
+<h3 id="抽象工厂模式">抽象工厂模式</h3>
+
+<p>3层switch。</p>
+
+:ET

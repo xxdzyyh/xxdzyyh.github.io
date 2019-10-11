@@ -1,0 +1,132 @@
+I"/<p>django 是 Python 下的一个 web 框架，了解一下 Python,顺便看看 django</p>
+
+<p>###python</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/user/bin/python
+# -*- coding: UTF-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+
+<span class="c1"># 多行语句
+</span><span class="n">total</span> <span class="o">=</span> <span class="n">item_one</span> <span class="o">+</span> \
+        <span class="n">item_two</span> <span class="o">+</span> \
+        <span class="n">item_three</span>
+        
+<span class="c1"># 引号
+</span><span class="n">word</span> <span class="o">=</span> <span class="s">'word'</span>
+<span class="n">sentence</span> <span class="o">=</span> <span class="s">"这是一个句子"</span>
+<span class="n">paragraph</span> <span class="o">=</span> <span class="s">"""这是一个段落。
+包含了多个语句"""</span>
+
+<span class="c1"># 一行多个语句使用 ；隔开
+</span><span class="k">print</span> <span class="s">"a"</span><span class="p">;</span> <span class="k">print</span> <span class="s">"b"</span>
+
+<span class="c1"># print 不换行后面加 ,
+</span><span class="k">print</span> <span class="n">x</span><span class="p">,</span>
+<span class="k">print</span> <span class="n">y</span>
+
+</code></pre></div></div>
+
+<h3 id="依赖管理">依赖管理</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 链接指向的内容保存为文件
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py 
+sudo pip install django
+</code></pre></div></div>
+
+<h3 id="django">django</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ django-admin startproject djangoApp
+$ python manage.py migrate
+$ python manage.py runserver
+$ python manage.py runserver 127.0.0.1:8000
+
+Starting development server at http://127.0.0.1:8000/
+</code></pre></div></div>
+
+<h4 id="helloworld">HelloWorld</h4>
+
+<p>在djangoApp下面 urls.py 同级目录里创建一个 home.py</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from django.http import HttpResponse
+
+def hello(request):
+	return HttpResponse("Hello world")
+</code></pre></div></div>
+
+<p>要想这个hello 被外界调用到，还需要在 urls.py 里进行注册</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 导入文件
+from . import home
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    # ^$中间代表path,没有path也可以
+    url(r'^$',home.hello),
+]
+
+</code></pre></div></div>
+<p>启动server(<code class="highlighter-rouge">python manage.py runserver</code>)后,访问 http://127.0.0.1:8000/ 可以看到 ‘hello world’</p>
+
+<h3 id="接收上传的文件">接收上传的文件</h3>
+
+<p>创建 myfile.py</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -*- coding: utf-8 -*-
+
+from django.http import HttpResponse
+import os
+import sys  
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+def upload_file(request):
+    if request.method == 'POST':
+        print request.FILES
+        obj = request.FILES.get('files')
+        f = open(os.path.join('upload',obj.name),'wb')
+        for line in obj.chunks():
+            f.write(line)
+        f.close()
+        return HttpResponse('{"msg":"上传成功"}')
+    else:
+        return HttpResponse('{"msg":"上传失败"}')
+
+def handle_uploaded_file(f):
+    with open(f.name, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+</code></pre></div></div>
+
+<p>需要在项目根目录下创建一个文件夹叫 “upload”,否则保存文件会出错。</p>
+
+<p>myfile同样需要在 urls.py 里面注册</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from . import home,myfile
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$',home.hello),
+    url(r'^myfile$',myfile.upload_file),
+]
+
+</code></pre></div></div>
+
+<p>客户端调用代码</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[self upLoadFileWithUrl:@"http://127.0.0.1:8000/myfile" parameters:nil constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt;  _Nonnull formData) {
+    [formData appendPartWithFileData:[@"wwwwerwerwer" dataUsingEncoding:NSUTF8StringEncoding] name:@"files" fileName:@"file" mimeType:@"text/plain"];
+} uploadProgressBlock:^(NSProgress * _Nonnull progress) {
+    
+} complateBlock:^(XNOConnectData * _Nonnull connectData, NSURLSessionTask * _Nonnull task) {
+    
+}];
+</code></pre></div></div>
+
+<p>上传成功后，可以看到upload下面都一个名为file的文件，文件的内容就是一个行字符串，”wwwwerwerwer”。</p>
+
+:ET
