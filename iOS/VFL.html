@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Swift Pointer · 观星</title>
+        <title>VFL · 观星</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="UI布局.html" />
+    <link rel="next" href="库.html" />
     
     
-    <link rel="prev" href="Swift JSON 转 model.html" />
+    <link rel="prev" href="Swift.html" />
     
 
     </head>
@@ -518,7 +518,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.27" data-path="Swift Pointer.html">
+        <li class="chapter " data-level="1.3.27" data-path="Swift Pointer.html">
             
                 <a href="Swift Pointer.html">
             
@@ -602,7 +602,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="VFL.html">
+        <li class="chapter active" data-level="1.4.3" data-path="VFL.html">
             
                 <a href="VFL.html">
             
@@ -967,7 +967,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Swift Pointer</a>
+        <a href=".." >VFL</a>
     </h1>
 </div>
 
@@ -982,43 +982,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#swift-pointer"><b></b>Swift Pointer</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="swift-pointer"><a name="swift-pointer" class="anchor-navigation-ex-anchor" href="#swift-pointer"><i class="fa fa-link" aria-hidden="true"></i></a><a name="swift-pointer" class="plugin-anchor" href="#swift-pointer"><i class="fa fa-link" aria-hidden="true"></i></a>Swift Pointer</h2>
-<p>&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x7C7B;&#x578B;.</p>
-<p>&#x5171;&#x7528;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</p>
-<pre><code>struct NumberStruct {
-    var age = 20
-    var height = 180
-    var weight = 70
-}
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#vfl"><b></b>VFL</a></li></ul></div><a href="#vfl" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="vfl"><a name="vfl" class="anchor-navigation-ex-anchor" href="#vfl"><i class="fa fa-link" aria-hidden="true"></i></a><a name="vfl" class="plugin-anchor" href="#vfl"><i class="fa fa-link" aria-hidden="true"></i></a>VFL</h1>
+<p>&#x5982;&#x679C;&#x975E;&#x8981;&#x7528;&#x539F;&#x751F;&#x5199;&#x7EA6;&#x675F;&#xFF0C;&#x90A3;&#x4F7F;&#x7528;VFL&#x8FD8;&#x662F;&#x65B9;&#x4FBF;&#x4E00;&#x70B9;&#x70B9;&#x3002;</p>
+<p>VFL&#x5C06;&#x7EA6;&#x675F;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x65B9;&#x5411;&#xFF0C;&#x6240;&#x4EE5;&#x8BBE;&#x7F6E;&#x7AD6;&#x76F4;&#x548C;&#x6C34;&#x5E73;&#x4E24;&#x6761;VFL&#x8BED;&#x53E5;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code>UIView *redView = [[UIView alloc] init];
 
-var num = NumberStruct()
-var numPtr = UnsafeMutablePointer&lt;NumberStruct&gt;(&amp;num)
+redView.backgroundColor = [UIColor redColor];
+redView.translatesAutoresizingMaskIntoConstraints = NO;
+
+[self.view addSubview:redView];
+
+NSArray *hLayout = [NSLayoutConstraint constraintsWithVisualFormat:@&quot;H:|-20-[redView]-20-|&quot; options:NSLayoutFormatAlignAllTop metrics:nil views: NSDictionaryOfVariableBindings(redView)];
+
+NSNumber *h = @([UIScreen mainScreen].bounds.size.width);
+NSArray *yLayout = [NSLayoutConstraint constraintsWithVisualFormat:@&quot;V:|-240-[redView(h)]|&quot; options:NSLayoutFormatAlignAllTop metrics:@{@&quot;h&quot;:h} views: NSDictionaryOfVariableBindings(redView)];
+
+[self.view addConstraints:hLayout];
+[self.view addConstraints:yLayout];
 </code></pre><blockquote>
-<p>capacity count</p>
+<p>@&quot;H:|-20-[redView]-20-|&quot;</p>
 </blockquote>
-<p>&#x5982;&#x679C;&#x539F;&#x6765;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x6BD4;&#x5982; numPtr &#x6307;&#x5411;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x4E3A; 24&#xFF0C;&#x5728;&#x8F6C;&#x5316;&#x4E3A; Int &#x7C7B;&#x578B;&#x7684;&#x65F6;&#x5019;&#xFF0C;Int&#x5360;&#x7528;8&#xFF0C;&#x90A3;count &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A; 3&#xFF0C;&#x8FD9;&#x6837;&#x65B0;&#x7684;&#x6307;&#x9488;&#x80FD;&#x5B8C;&#x5168;&#x8BFB;&#x53D6;&#x7A7A;&#x95F4;&#x7684;&#x503C;</p>
-<p><img src="https://i.loli.net/2019/05/30/5cefae9e7111266063.png" alt="cao&apos;z"></p>
-<pre><code>func withMemoryRebound&lt;T, Result&gt;(to type: T.Type, capacity count: Int, _ body: (UnsafeMutablePointer&lt;T&gt;) throws -&gt; Result) rethrows -&gt; Result
+<p>&#x6C34;&#x5E73;&#x65B9;&#x5411;&#x4E0A;&#x8DDD;&#x79BB;superview&#x5DE6;&#x53F3;&#x95F4;&#x8DDD;&#x4E3A;20</p>
+<blockquote>
+<p>@&quot;V:|-240-[redView(h)]|&quot;</p>
+</blockquote>
+<p>&#x7AD6;&#x76F4;&#x65B9;&#x5411;&#x4E0A;&#x9876;&#x90E8;&#x8DDD;&#x79BB;superview 240,&#x9AD8;&#x5EA6;&#x4E3A;h</p>
 
-var length = numPtr.withMemoryRebound(to: Int.self, capacity: 4) {
-    return
-}
-
-// &#x4E0B;&#x8FB9;&#x6CA1;&#x6709;&#x8D8A;&#x754C;&#x68C0;&#x67E5;&#xFF0C;&#x4E0D;&#x8981;&#x8D8A;&#x754C;
-print(length[0])
-print(length[1])
-print(length[2])
-print(length[3])
-
-// 20
-// 180
-// 70
-// 4849579392
-
-length[0] = 999
-
-// NumberStruct(age: 999, height: 180, weight: 70)
-</code></pre>
                                 
                                 </section>
                             
@@ -1045,12 +1034,12 @@ length[0] = 999
 
             
                 
-                <a href="Swift JSON 转 model.html" class="navigation navigation-prev " aria-label="Previous page: Swift JSON 转 model">
+                <a href="Swift.html" class="navigation navigation-prev " aria-label="Previous page: swift">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="UI布局.html" class="navigation navigation-next " aria-label="Next page: UI布局">
+                <a href="库.html" class="navigation navigation-next " aria-label="Next page: 库">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1061,7 +1050,7 @@ length[0] = 999
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Swift Pointer","level":"1.3.27","depth":2,"next":{"title":"UI布局","level":"1.3.28","depth":2,"path":"iOS/UI布局.md","ref":"iOS/UI布局.md","articles":[]},"previous":{"title":"Swift JSON 转 model","level":"1.3.26","depth":2,"path":"iOS/Swift JSON 转 model.md","ref":"iOS/Swift JSON 转 model.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/Swift Pointer.md","mtime":"2019-10-31T03:35:34.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-08T09:28:25.319Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"VFL","level":"1.4.3","depth":2,"next":{"title":"库","level":"1.4.4","depth":2,"path":"iOS/库.md","ref":"iOS/库.md","articles":[]},"previous":{"title":"swift","level":"1.4.2","depth":2,"path":"iOS/Swift.md","ref":"iOS/Swift.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/VFL.md","mtime":"2019-10-31T03:35:34.158Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-08T09:28:25.319Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
