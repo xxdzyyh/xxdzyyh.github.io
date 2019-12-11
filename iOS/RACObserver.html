@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>将macro移除pch · 观星</title>
+        <title>RACObserver · 观星</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="清理webview缓存.html" />
+    <link rel="next" href="RAC实现代理.html" />
     
     
-    <link rel="prev" href="编译过程.html" />
+    <link rel="prev" href="RAC.html" />
     
 
     </head>
@@ -245,7 +245,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.6" data-path="将macro移除pch.html">
+        <li class="chapter " data-level="1.3.6" data-path="将macro移除pch.html">
             
                 <a href="将macro移除pch.html">
             
@@ -466,7 +466,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.23" data-path="RACObserver.html">
+        <li class="chapter active" data-level="1.3.23" data-path="RACObserver.html">
             
                 <a href="RACObserver.html">
             
@@ -980,7 +980,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >将macro移除pch</a>
+        <a href=".." >RACObserver</a>
     </h1>
 </div>
 
@@ -995,72 +995,49 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;"><b></b>&#x7528;&#x5230;&#x7684; shell &#x547D;&#x4EE4;</a></li><li><span class="title-icon "></span><a href="#checkmacrosh"><b></b>check_macro.sh</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><p>&#x9879;&#x76EE;&#x5728;&#x66F4;&#x6362;&#x540E;&#x53F0;&#x73AF;&#x5883;&#x540E;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#xFF0C;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x5229;&#x7528; xcode &#x7F16;&#x8BD1;&#x7F13;&#x5B58;&#xFF0C;&#x5BFC;&#x81F4;&#x6BCF;&#x6B21;&#x5207;&#x6362;&#x73AF;&#x5883;&#x540E;&#x7F16;&#x8BD1;&#x65F6;&#x95F4;&#x7279;&#x522B;&#x957F;&#x3002;</p>
-<p>&#x5206;&#x6790;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#x540E;&#xFF0C;&#x53D1;&#x73B0;&#x5B9A;&#x4E49;&#x540E;&#x53F0;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x6587;&#x4EF6; URLMacro.h &#x88AB;&#x95F4;&#x63A5;&#x5305;&#x542B;&#x5728;&#x9879;&#x76EE;&#x7684;pch&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x88AB;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5305;&#x542B;&#xFF0C;&#x4E00;&#x65E6;&#x6539;&#x52A8;URLMacro.h&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x3002;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5C06; URLMacro.h &#x4ECE; pch &#x6587;&#x4EF6;&#x4E2D;&#x79FB;&#x9664;&#x3002;</p>
-<p>&#x5934;&#x6587;&#x4EF6;&#x5BFC;&#x5165;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>-- pch  
-    -- AppMacro.h
-      -- URLMacro.h
-      -- ThirdPartKeyMacro.h
-           -- URLMacro.h
-</code></pre><p>&#x5728; URLMacro.h &#x548C; ThirdPartKeyMacro.h &#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4E0D;&#x5C11;&#x7684;&#x5B8F;&#xFF0C;&#x5C06;&#x8FD9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x79FB;&#x51FA;pch&#x540E;&#xFF0C;&#x7528;&#x5230;&#x8FD9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5B8F;&#x7684;&#x6587;&#x4EF6;&#x9700;&#x8981;&#x81EA;&#x884C;&#x5BFC;&#x5165;&#x76F8;&#x5E94;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x3002;&#x8981;&#x786E;&#x4FDD;&#x6240;&#x6709;&#x7528;&#x5230;&#x8FD9;&#x4E9B;&#x5B8F;&#x7684;&#x6587;&#x4EF6;&#x5BFC;&#x5165;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;xcode&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x68C0;&#x7D22;&#x54EA;&#x4E9B;&#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5B8F;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;shell&#x811A;&#x672C;&#x6765;&#x505A;&#x8FD9;&#x4E2A;&#x4E8B;&#x60C5;&#x3002;</p>
-<h3 id="&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;"><a name="&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;" class="anchor-navigation-ex-anchor" href="#&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;" class="plugin-anchor" href="#&#x7528;&#x5230;&#x7684;-shell-&#x547D;&#x4EE4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7528;&#x5230;&#x7684; shell &#x547D;&#x4EE4;</h3>
-<blockquote>
-<p>grep</p>
-</blockquote>
-<p>&#x9488;&#x5BF9;&#x7ED9;&#x5B9A;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5BF9;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x9010;&#x884C;&#x641C;&#x7D22;</p>
-<blockquote>
-<p>awk</p>
-</blockquote>
-<p>&#x5BF9;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6309;&#x5217;&#x5904;&#x7406;</p>
-<blockquote>
-<p>uniq</p>
-</blockquote>
-<p>&#x5BF9;&#x76F8;&#x90BB;&#x7684;&#x91CD;&#x590D;&#x884C;&#x8FDB;&#x884C;&#x53BB;&#x91CD;</p>
-<blockquote>
-<p>sort</p>
-</blockquote>
-<p>&#x5BF9;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6309;&#x884C;&#x6392;&#x5E8F;</p>
-<h3 id="checkmacrosh"><a name="checkmacrosh" class="anchor-navigation-ex-anchor" href="#checkmacrosh"><i class="fa fa-link" aria-hidden="true"></i></a><a name="checkmacrosh" class="plugin-anchor" href="#checkmacrosh"><i class="fa fa-link" aria-hidden="true"></i></a>check_macro.sh</h3>
-<pre><code>path=$1
-rm ~/Desktop/result.txt
-rm ~/Desktop/result1.txt
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#racobserver"><b></b>RACObserver</a></li><ul><li><span class="title-icon "></span><a href="#keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;"><b></b>keyPath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;</a></li><li><span class="title-icon "></span><a href="#setter"><b></b>setter</a></li><li><span class="title-icon "></span><a href="#&#x5408;&#x7406;&#x4F7F;&#x7528;"><b></b>&#x5408;&#x7406;&#x4F7F;&#x7528;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="racobserver"><a name="racobserver" class="anchor-navigation-ex-anchor" href="#racobserver"><i class="fa fa-link" aria-hidden="true"></i></a><a name="racobserver" class="plugin-anchor" href="#racobserver"><i class="fa fa-link" aria-hidden="true"></i></a>RACObserver</h2>
+<pre><code>#define RACObserve(TARGET, KEYPATH) \
+    [(id)(TARGET) rac_valuesForKeyPath:@keypath(TARGET, KEYPATH) observer:self]
+</code></pre><p>RACObserver &#x662F;&#x57FA;&#x4E8E;KVC&#x5B9E;&#x73B0;&#x7684;&#xFF08;KVC&#x7684;&#x4EE3;&#x7801;&#x5B58;&#x5728;&#x4E8E;RACKVOTrampoline&#x4E2D;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;KVC&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x4E5F;&#x5C31;&#x662F;RACObserver&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<h3 id="keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;"><a name="keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;" class="anchor-navigation-ex-anchor" href="#keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;" class="plugin-anchor" href="#keypath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a>keyPath&#x9009;&#x53D6;&#x7684;&#x95EE;&#x9898;</h3>
+<pre><code>- (instancetype)initWithAnchor:(Anchor *)anchor {
+    self = [super init];
+    if (self) {
+        self.anchor = anchor;
 
-workspace=&apos;/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline&apos;
+        [self bind];
+    }
+    return self;
+}
 
-for i in `grep ^#define $path | awk &apos;{print $2}&apos; | uniq`; do
-    echo $i
+- (void)bind {
+    RAC(self,anchorName) = RACObserve(self.anchor, name);
+    RAC(self, anchorUid) = RACObserve(self, anchor.uid);
+}
+</code></pre><ul>
+<li><p>RAC(self,anchorName) = RACObserve(self.anchor, name)</p>
+<p>RACObserve(self.anchor, name) &#x76D1;&#x542C;&#x7684;&#x662F;self.anchor&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;name&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;self.anchor = anchor2&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;self.anchorName &#x4F9D;&#x65E7;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x5982;&#x679C;self.anchor = nil,&#x8FD9;&#x53E5;&#x8BDD;&#x6CA1;&#x6709;&#x6548;&#x679C;&#x3002;</p>
+</li>
+<li><p>RAC(self, anchorUid) = RACObserve(self, anchor.uid);</p>
+<p>RACObserve(self, anchor.uid) &#x76D1;&#x542C;&#x7684;&#x662F;anchor.uid,anchor&#x548C;uid&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x90FD;&#x4F1A;&#x6539;&#x53D8;self&#x3002;anchorUid&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;anchor &#x4E3A;nil,&#x540E;&#x7EED;&#x518D;&#x7ED9;self.anchor&#x8D4B;&#x503C;&#xFF0C;self.anchorUid&#x4F1A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x503C;</p>
+</li>
+</ul>
+<p>&#x5BF9;&#x6BD4;&#x4E24;&#x4E2A;keyPath&#xFF0C;&#x80AF;&#x5B9A;&#x9009;&#x62E9;&#x540E;&#x8005;&#x4F1A;&#x6BD4;&#x8F83;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x4E0D;&#x77E5;&#x9053;&#x672A;&#x6765;&#x4EE3;&#x7801;&#x4F1A;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x3002;</p>
+<h3 id="setter"><a name="setter" class="anchor-navigation-ex-anchor" href="#setter"><i class="fa fa-link" aria-hidden="true"></i></a><a name="setter" class="plugin-anchor" href="#setter"><i class="fa fa-link" aria-hidden="true"></i></a>setter</h3>
+<p>&#x5982;&#x679C;&#x91CD;&#x5199;setter&#x65B9;&#x6CD5;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x8C03;&#x7528; willChangeValueForKey &#x548C;  didChangeValueForKey&#xFF0C;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E5F;&#x4E00;&#x6837;</p>
+<pre><code>- (void)setUid:(NSString *)uid {
+    [self willChangeValueForKey:@&quot;uid&quot;];
+    _uid = uid;
+    [self didChangeValueForKey:@&quot;uid&quot;];
+}
 
-    for j in `grep -r &quot;$i&quot; &quot;$workspace&quot; | awk -F &apos;:&apos; &apos;{print $1}&apos;`; do
-        echo $j &gt;&gt; ~/Desktop/result.txt
-    done
-done
-
-sort ~/Desktop/result.txt | uniq &gt; ~/Desktop/result1.txt
-</code></pre><p>&#x8C03;&#x7528; </p>
-<pre><code>sh check_marco.sh /Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/Macro/ThirdPartKeyMacro.h 
-
-cat result1.txt 
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/AppDelegate/XNOAppDelegate.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/General/Classes/APNSManager/XNOAPNSManager.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/General/Classes/CustomerServiceIM/XNOCustomerServiceIM.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/General/Classes/TYStatisticUtils/Core/XNOTYStatisticHelper.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/LoanModule/IdentityAuthentication/VC/XNOBindBankCardVC.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/LoanModule/IdentityAuthentication/VC/XNORealNameVerifiedVC.m
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/Macro/ThirdPartKeyMacro.h
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/Vendors/STCardLib/STAPIAccountInfo.h
-/Users/xiaoniu/Workspace/XNOnline/XNOnline/XNOnline/main.m
-</code></pre><p>&#x4E5F;&#x5C31;&#x662F;&#x8FD9;9&#x4E2A;&#x6587;&#x4EF6;&#x5305;&#x542B;&#x4E86; ThirdPartKeyMacro.h &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;&#xFF0C;ThirdPartKeyMacro.h &#x672C;&#x8EAB;&#x662F;&#x4E0D;&#x7528;&#x5BFC;&#x5165;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5254;&#x9664;&#x3002;
-&#x4F9D;&#x6B21;&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x8FDB;&#x884C;&#x68C0;&#x67E5;</p>
-<pre><code>for path in `awk &apos;{print $1}&apos; result1.txt`; do
-  grep -q &apos;#import &quot;ThirdPartKeyMacro.h&quot;&apos; $path
-  if [[ $? == 0 ]]; then
-      echo &quot;$path has import ThirdPartKeyMacro.h&quot;
-  else
-      echo &quot;!!! $path has not import ThirdPartKeyMacro.h !!!&quot;
-  fi
-done;
-</code></pre><p>&#x5BF9;&#x4E8E; URLMarco.h &#x6267;&#x884C;&#x540C;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x5373;&#x53EF;&#x3002;</p>
+- (void)updateUid {
+    [self willChangeValueForKey:@&quot;uid&quot;];
+    _uid = @&quot;002&quot;;
+    [self didChangeValueForKey:@&quot;uid&quot;];
+}
+</code></pre><h3 id="&#x5408;&#x7406;&#x4F7F;&#x7528;"><a name="&#x5408;&#x7406;&#x4F7F;&#x7528;" class="anchor-navigation-ex-anchor" href="#&#x5408;&#x7406;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5408;&#x7406;&#x4F7F;&#x7528;" class="plugin-anchor" href="#&#x5408;&#x7406;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5408;&#x7406;&#x4F7F;&#x7528;</h3>
+<p>RACObserver&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x76D1;&#x542C;&#x4EE3;&#x7801;&#x6563;&#x5E03;&#x5728;&#x4EE3;&#x7801;&#x7684;&#x4E2A;&#x4E2A;&#x89D2;&#x843D;&#xFF0C;&#x7EF4;&#x62A4;&#x8D77;&#x6765;&#x5C31;&#x975E;&#x5E38;&#x56F0;&#x96BE;&#x3002;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x4FEE;&#x6539;&#x4E86;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x5C31;&#x4F1A;&#x5F15;&#x8D77;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8FDE;&#x9501;&#x53CD;&#x5E94;&#x3002;</p>
 
                                 
                                 </section>
@@ -1088,12 +1065,12 @@ done;
 
             
                 
-                <a href="编译过程.html" class="navigation navigation-prev " aria-label="Previous page: 编译过程">
+                <a href="RAC.html" class="navigation navigation-prev " aria-label="Previous page: RAC">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="清理webview缓存.html" class="navigation navigation-next " aria-label="Next page: 清理webview缓存">
+                <a href="RAC实现代理.html" class="navigation navigation-next " aria-label="Next page: RAC实现代理">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1104,7 +1081,7 @@ done;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"将macro移除pch","level":"1.3.6","depth":2,"next":{"title":"清理webview缓存","level":"1.3.7","depth":2,"path":"iOS/清理webview缓存.md","ref":"iOS/清理webview缓存.md","articles":[]},"previous":{"title":"编译过程","level":"1.3.5","depth":2,"path":"iOS/编译过程.md","ref":"iOS/编译过程.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/将macro移除pch.md","mtime":"2019-12-02T11:01:12.574Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-11T07:59:13.774Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RACObserver","level":"1.3.23","depth":2,"next":{"title":"RAC实现代理","level":"1.3.24","depth":2,"path":"iOS/RAC实现代理.md","ref":"iOS/RAC实现代理.md","articles":[]},"previous":{"title":"RAC","level":"1.3.22","depth":2,"path":"iOS/RAC.md","ref":"iOS/RAC.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/RACObserver.md","mtime":"2019-12-11T07:54:18.257Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-11T07:59:13.774Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
