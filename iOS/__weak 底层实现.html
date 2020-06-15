@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>iOS 开发 · 观星</title>
+        <title>__weak 底层实现 · 观星</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="iOS&Android 使用对比.html" />
+    <link rel="next" href="../shell.html" />
     
     
-    <link rel="prev" href="HandyJSON.html" />
+    <link rel="prev" href="库.html" />
     
 
     </head>
@@ -388,7 +388,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.17" data-path="iOS 开发.html">
+        <li class="chapter " data-level="1.3.17" data-path="iOS 开发.html">
             
                 <a href="iOS 开发.html">
             
@@ -641,7 +641,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="__weak 底层实现.html">
+        <li class="chapter active" data-level="1.4.5" data-path="__weak 底层实现.html">
             
                 <a href="__weak 底层实现.html">
             
@@ -993,7 +993,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >iOS 开发</a>
+        <a href=".." >__weak 底层实现</a>
     </h1>
 </div>
 
@@ -1008,90 +1008,129 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#ios-&#x5F00;&#x53D1;"><b></b>iOS &#x5F00;&#x53D1;</a></li><ul><li><span class="title-icon "></span><a href="#http"><b></b>http</a></li><li><span class="title-icon "></span><a href="#tcp"><b></b>TCP</a></li><li><span class="title-icon "></span><a href="#&#x65AD;&#x70B9;&#x7EED;&#x4F20;"><b></b>&#x65AD;&#x70B9;&#x7EED;&#x4F20;</a></li><li><span class="title-icon "></span><a href="#&#x6784;&#x67B6;"><b></b>&#x6784;&#x67B6;</a></li><li><span class="title-icon "></span><a href="#mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;"><b></b>MVVM &#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;</a></li><li><span class="title-icon "></span><a href="#&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;"><b></b>&#x8FDB;&#x7A0B; &amp; &#x7EBF;&#x7A0B;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="ios-&#x5F00;&#x53D1;"><a name="ios-&#x5F00;&#x53D1;" class="anchor-navigation-ex-anchor" href="#ios-&#x5F00;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="ios-&#x5F00;&#x53D1;" class="plugin-anchor" href="#ios-&#x5F00;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a>iOS &#x5F00;&#x53D1;</h2>
-<h3 id=""><a name="" class="plugin-anchor" href="#"><i class="fa fa-link" aria-hidden="true"></i></a> </h3>
-<p><a href="https://opensource.apple.com/tarballs/" target="_blank">&#x5168;&#x90E8;&#x5F00;&#x6E90;&#x4EE3;&#x7801;</a></p>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;"><b></b>__weak &#x5E95;&#x5C42;&#x5B9E;&#x73B0;</a></li><ul><li><span class="title-icon "></span><a href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><b></b>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;"><a name="weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;" class="anchor-navigation-ex-anchor" href="#weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;" class="plugin-anchor" href="#weak-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;"><i class="fa fa-link" aria-hidden="true"></i></a>__weak &#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h2>
+<pre><code>NSObject *obj = ...
+__weak NSObject *a = obj;
+__weak NSObject *b = obj;
+</code></pre><p>&#x5728;obj &#x91CA;&#x653E;&#x662F;&#xFF0C;a&#x548C;b&#x5FC5;&#x987B;&#x7F6E;&#x4E3A;nil&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x901A;&#x8FC7;obj&#x627E;&#x5230;a&#x548C;b&#x3002;a&#x548C;b&#x53EF;&#x4EE5;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;value&#xFF0C;obj&#x4F5C;&#x4E3A;key,&#x901A;&#x8FC7;key&#x627E;&#x5230;value&#xFF0C;&#x7528;Map&#x6765;&#x5B58;&#x50A8;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>[a,b]</td>
+</tr>
+<tr>
+<td>obj1</td>
+<td>[c,d,e]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a name="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="anchor-navigation-ex-anchor" href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="plugin-anchor" href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h3>
+<p>&#x5982;&#x679C;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;Map,&#x6BD4;&#x5982;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x90FD;&#x521B;&#x5EFA;&#x4E86;__weak&#x5F15;&#x7528;&#xFF0C;&#x90A3;&#x7ED3;&#x679C;&#x662F;[a],&#x8FD8;&#x662F;[b],&#x8FD8;&#x662F;[a,b]&#xFF0C;&#x8FD9;&#x4E2A;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#xFF0C;&#x6240;&#x4EE5;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;Map&#x5FC5;&#x987B;&#x52A0;&#x9501;&#xFF0C;&#x5982;&#x679C;Map&#x5F88;&#x5927;&#xFF0C;&#x6548;&#x7387;&#x4F1A;&#x975E;&#x5E38;&#x4F4E;&#xFF0C;&#x6240;&#x4EE5;&#x82F9;&#x679C;&#x91C7;&#x53D6;&#x4E86;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<p>SideTables </p>
 <ul>
-<li><a href="https://opensource.apple.com/source/objc4/" target="_blank">objc4&#x6E90;&#x7801;&#x5728;&#x7EBF;&#x67E5;&#x770B;</a></li>
-<li><a href="https://opensource.apple.com/tarballs/objc4/" target="_blank">objc4&#x6E90;&#x7801;&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a></li>
-<li><a href="https://opensource.apple.com/tarballs/CF/CF-855.17.tar.gz" target="_blank">CFFoundation</a></li>
+<li>SideTable_0</li>
+<li>...</li>
+<li>SideTable_63<ul>
+<li>weak_table_t </li>
 </ul>
-<h3 id="http"><a name="http" class="anchor-navigation-ex-anchor" href="#http"><i class="fa fa-link" aria-hidden="true"></i></a><a name="http" class="plugin-anchor" href="#http"><i class="fa fa-link" aria-hidden="true"></i></a>http</h3>
-<p>&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x5230;http&#x65B9;&#x6CD5;</p>
-<blockquote>
-<p>post &#x53C2;&#x6570;&#x5728;&#x8BF7;&#x6C42;&#x4F53;&#x91CD;&#xFF0C;&#x6CA1;&#x6709;&#x957F;&#x5EA6;&#x9650;&#x5236;</p>
-<p>get &#x53C2;&#x6570;&#x660E;&#x6587;&#x4F20;&#x8F93;&#xFF0C;</p>
-<p>put &#x4E0A;&#x4F20;</p>
-<p>head &#x53EA;&#x662F;&#x8FD4;&#x56DE;head,&#x4E0D;&#x8FD4;&#x56DE;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5224;&#x65AD;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3001;&#x5224;&#x65AD;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x8FC7;&#x7B49;&#xFF0C;&#x8282;&#x7EA6;&#x6D41;&#x91CF;</p>
-</blockquote>
-<h3 id="tcp"><a name="tcp" class="anchor-navigation-ex-anchor" href="#tcp"><i class="fa fa-link" aria-hidden="true"></i></a><a name="tcp" class="plugin-anchor" href="#tcp"><i class="fa fa-link" aria-hidden="true"></i></a>TCP</h3>
-<p>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</p>
-<ol>
-<li>&#x4E3B;&#x52A8;&#x65B9;&#x53D1;&#x9001;SYN</li>
-<li>&#x88AB;&#x52A8;&#x65B9;&#x6536;&#x5230;SYN&#xFF0C;&#x53D1;&#x9001;SYN-ACK&#x8BF7;&#x6C42;</li>
-<li>&#x4E3B;&#x52A8;&#x65B9;&#x6536;&#x5230;SYN-ACK&#xFF0C;&#x53D1;&#x9001;ACK</li>
-</ol>
-<p>&#x91CA;&#x653E;&#x8FDE;&#x63A5;</p>
-<ol>
-<li>&#x4E3B;&#x52A8;&#x65B9;&#x53D1;&#x9001;Fin</li>
-<li>&#x88AB;&#x52A8;&#x65B9;&#x6536;&#x5230;Fin&#xFF0C;&#x53D1;&#x9001;ACK</li>
-<li>&#x88AB;&#x52A8;&#x65B9;&#x53D1;&#x9001;Fin</li>
-<li>&#x4E3B;&#x52A8;&#x65B9;&#x6536;&#x5230;Fin&#xFF0C;&#x53D1;&#x9001;ACK</li>
-</ol>
-<h3 id="&#x65AD;&#x70B9;&#x7EED;&#x4F20;"><a name="&#x65AD;&#x70B9;&#x7EED;&#x4F20;" class="anchor-navigation-ex-anchor" href="#&#x65AD;&#x70B9;&#x7EED;&#x4F20;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x65AD;&#x70B9;&#x7EED;&#x4F20;" class="plugin-anchor" href="#&#x65AD;&#x70B9;&#x7EED;&#x4F20;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65AD;&#x70B9;&#x7EED;&#x4F20;</h3>
-<p>http/1.1 &#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4E00;&#x822C;&#x670D;&#x52A1;&#x5668;&#x544A;&#x8BC9;&#x4F60;content-Length,&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E0B;&#x8F7D;&#x7684;range&#x3002;</p>
-<p>&#x5728; iOS &#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; NSURLSession &#x6765;&#x5B9E;&#x73B0;&#x65AD;&#x70B9;&#x7EED;&#x4F20;&#x3002;
-resume data &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;plist&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x4E0B;&#x8F7D;&#x9700;&#x8981;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;</p>
-<pre><code>&lt;plist version=&quot;1.0&quot;&gt;
-    &lt;dict&gt;
-        &lt;key&gt;NSURLSessionDownloadURL&lt;/key&gt;
-        &lt;string&gt;http://wwww.xxxx.file&lt;/string&gt;
-        &lt;key&gt; NSURLSessionResumeBytesReceived&lt;/key&gt;
-        &lt;integer&gt;12505822&lt;/integer&gt;
-        &lt;key&gt;NSURLSessionResumeCurrentRequest&lt;/key&gt;
-        &lt;data&gt;YnBsaXsdjfafkafklasfadlfakdfsf&lt;/data&gt;
-        ...
-    &lt;/dict&gt;
-&lt;/plist&gt;
-</code></pre><pre><code>// NSURLSession.m
+</li>
+</ul>
+<pre><code>struct SideTable {
+    spinlock_t slock;
+    RefcountMap refcnts;
+    weak_table_t weak_table;
 
-/* Creates a download task with the resume data.  If the download cannot be successfully resumed, URLSession:task:didCompleteWithError: will be called. */
-- (NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData;
-</code></pre><pre><code>// AFURLSessionManager.m
+    SideTable() {
+        memset(&amp;weak_table, 0, sizeof(weak_table));
+    }
+
+    ~SideTable() {
+        _objc_fatal(&quot;Do not delete SideTable.&quot;);
+    }
+
+    void lock() { slock.lock(); }
+    void unlock() { slock.unlock(); }
+    void forceReset() { slock.forceReset(); }
+
+    // Address-ordered lock discipline for a pair of side tables.
+
+    template&lt;HaveOld, HaveNew&gt;
+    static void lockTwo(SideTable *lock1, SideTable *lock2);
+    template&lt;HaveOld, HaveNew&gt;
+    static void unlockTwo(SideTable *lock1, SideTable *lock2);
+};
+
 
 /**
- Creates an `NSURLSessionDownloadTask` with the specified resume data.
-
- @param resumeData The data used to resume downloading.
- @param progress A progress object monitoring the current download progress.
- @param destination A block object to be executed in order to determine the destination of the downloaded file. This block takes two arguments, the target path &amp; the server response, and returns the desired file URL of the resulting download. The temporary file used during the download will be automatically deleted after being moved to the returned URL.
- @param completionHandler A block to be executed when a task finishes. This block has no return value and takes three arguments: the server response, the path of the downloaded file, and the error describing the network or parsing error that occurred, if any.
+ * The global weak references table. Stores object ids as keys,
+ * and weak_entry_t structs as their values.
  */
-- (NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData
-                                                progress:(NSProgress * __nullable __autoreleasing * __nullable)progress
-                                             destination:(nullable NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
-                                       completionHandler:(nullable void (^)(NSURLResponse *response, NSURL * __nullable filePath, NSError * __nullable error))completionHandler;
-</code></pre><h3 id="&#x6784;&#x67B6;"><a name="&#x6784;&#x67B6;" class="anchor-navigation-ex-anchor" href="#&#x6784;&#x67B6;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x6784;&#x67B6;" class="plugin-anchor" href="#&#x6784;&#x67B6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6784;&#x67B6;</h3>
-<h3 id="mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;"><a name="mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;" class="anchor-navigation-ex-anchor" href="#mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;" class="plugin-anchor" href="#mvvm-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>MVVM &#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;</h3>
-<p>kvc &amp; kvo</p>
-<h3 id="&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;"><a name="&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;" class="plugin-anchor" href="#&#x8FDB;&#x7A0B;--&#x7EBF;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FDB;&#x7A0B; &amp; &#x7EBF;&#x7A0B;</h3>
-<p>&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
-<p>&#x8FDB;&#x7A0B;&#xFF1A;&#x9700;&#x8981;&#x5206;&#x914D;&#x72EC;&#x7ACB;&#x8FDB;&#x7A0B;&#x53F7;&#x3001;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x7B49;&#xFF0C;&#x5F00;&#x9500;&#x5927;
-&#x7EBF;&#x7A0B;&#xFF1A;&#x4E00;&#x4E2A;&#x8FDB;&#x884C;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x5207;&#x6362;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x8D44;&#x6E90;
-&#x534F;&#x7A0B;&#xFF1A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x534F;&#x7A0B;&#xFF0C;&#x5207;&#x6362;&#x7531;&#x8F6F;&#x4EF6;&#x5C42;&#x9762;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x8D44;&#x6E90;</p>
-<blockquote>
-<p>&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;&#xFF1F;</p>
-</blockquote>
-<ol>
-<li><p>&#x5171;&#x4EAB;&#x5B58;&#x50A8;
- &#x76F8;&#x4E92;&#x901A;&#x8BAF;&#x7684;&#x8FDB;&#x7A0B;&#x6709;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x533A;.&#x8FDB;&#x7A0B;&#x95F4;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x8BFB;&#x5199;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x53D8;&#x91CF;&#x6765;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x6B65;&#x4E0E;&#x4E92;&#x65A5;&#x5728;&#x5E76;&#x53D1;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x65F6;&#x5B89;&#x6392;&#x8FDB;&#x5165;&#x7A0B;&#x5E8F;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x7684;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x533A;&#x53CA;&#x540C;&#x6B65;&#x4E92;&#x65A5;&#x5DE5;&#x5177;&#x3002;</p>
-</li>
-<li><p>&#x6D88;&#x606F;&#x4F20;&#x9012;</p>
-</li>
-</ol>
-<ol>
-<li>&#x7BA1;&#x9053;&#x901A;&#x4FE1;</li>
-</ol>
+struct weak_table_t {
+    weak_entry_t *weak_entries;
+    size_t    num_entries;
+    uintptr_t mask;
+    uintptr_t max_hash_displacement;
+};
+
+
+/**
+ * The internal structure stored in the weak references table. 
+ * It maintains and stores
+ * a hash set of weak references pointing to an object.
+ * If out_of_line_ness != REFERRERS_OUT_OF_LINE then the set
+ * is instead a small inline array.
+ */
+#define WEAK_INLINE_COUNT 4
+
+// out_of_line_ness field overlaps with the low two bits of inline_referrers[1].
+// inline_referrers[1] is a DisguisedPtr of a pointer-aligned address.
+// The low two bits of a pointer-aligned DisguisedPtr will always be 0b00
+// (disguised nil or 0x80..00) or 0b11 (any other address).
+// Therefore out_of_line_ness == 0b10 is used to mark the out-of-line state.
+#define REFERRERS_OUT_OF_LINE 2
+
+struct weak_entry_t {
+    DisguisedPtr&lt;objc_object&gt; referent;
+    union {
+        struct {
+            weak_referrer_t *referrers;
+            uintptr_t        out_of_line_ness : 2;
+            uintptr_t        num_refs : PTR_MINUS_2;
+            uintptr_t        mask;
+            uintptr_t        max_hash_displacement;
+        };
+        struct {
+            // out_of_line_ness field is low bits of inline_referrers[1]
+            weak_referrer_t  inline_referrers[WEAK_INLINE_COUNT];
+        };
+    };
+
+    bool out_of_line() {
+        return (out_of_line_ness == REFERRERS_OUT_OF_LINE);
+    }
+
+    weak_entry_t&amp; operator=(const weak_entry_t&amp; other) {
+        memcpy(this, &amp;other, sizeof(other));
+        return *this;
+    }
+
+    weak_entry_t(objc_object *newReferent, objc_object **newReferrer)
+        : referent(newReferent)
+    {
+        inline_referrers[0] = newReferrer;
+        for (int i = 1; i &lt; WEAK_INLINE_COUNT; i++) {
+            inline_referrers[i] = nil;
+        }
+    }
+};
+</code></pre><p>weak_entry_t</p>
 
                                 
                                 </section>
@@ -1119,12 +1158,12 @@ resume data &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;plist&#x6587;&#x4EF6
 
             
                 
-                <a href="HandyJSON.html" class="navigation navigation-prev " aria-label="Previous page: HandyJSON">
+                <a href="库.html" class="navigation navigation-prev " aria-label="Previous page: 库">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="iOS&Android 使用对比.html" class="navigation navigation-next " aria-label="Next page: iOS&Android 使用对比">
+                <a href="../shell.html" class="navigation navigation-next " aria-label="Next page: shell">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1135,7 +1174,7 @@ resume data &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;plist&#x6587;&#x4EF6
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"iOS 开发","level":"1.3.17","depth":2,"next":{"title":"iOS&Android 使用对比","level":"1.3.18","depth":2,"path":"iOS/iOS&Android 使用对比.md","ref":"iOS/iOS&Android 使用对比.md","articles":[]},"previous":{"title":"HandyJSON","level":"1.3.16","depth":2,"path":"iOS/HandyJSON.md","ref":"iOS/HandyJSON.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/iOS 开发.md","mtime":"2020-06-15T02:06:52.961Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-15T08:00:22.865Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"__weak 底层实现","level":"1.4.5","depth":2,"next":{"title":"shell","level":"1.5","depth":1,"path":"shell.md","ref":"shell.md","articles":[{"title":"shell入门","level":"1.5.1","depth":2,"path":"shell/shell入门.md","ref":"shell/shell入门.md","articles":[]},{"title":"字符串","level":"1.5.2","depth":2,"path":"shell/字符串.md","ref":"shell/字符串.md","articles":[]},{"title":"sed","level":"1.5.3","depth":2,"path":"shell/sed.md","ref":"shell/sed.md","articles":[]},{"title":"grep","level":"1.5.4","depth":2,"path":"shell/grep.md","ref":"shell/grep.md","articles":[]},{"title":"awk","level":"1.5.5","depth":2,"path":"shell/awk.md","ref":"shell/awk.md","articles":[]},{"title":"curl","level":"1.5.6","depth":2,"path":"shell/curl.md","ref":"shell/curl.md","articles":[]},{"title":"jq","level":"1.5.7","depth":2,"path":"shell/jq.md","ref":"shell/jq.md","articles":[]},{"title":"date","level":"1.5.8","depth":2,"path":"shell/date.md","ref":"shell/date.md","articles":[]},{"title":"shell脚本在 iOS 中的应用","level":"1.5.9","depth":2,"path":"shell/shell脚本在 iOS 中的应用.md","ref":"shell/shell脚本在 iOS 中的应用.md","articles":[]},{"title":"Oh-My-Zsh","level":"1.5.10","depth":2,"path":"shell/Mac Oh-My-Zsh.md","ref":"shell/Mac Oh-My-Zsh.md","articles":[]},{"title":"Apple Script入门","level":"1.5.11","depth":2,"path":"shell/Apple Script入门.md","ref":"shell/Apple Script入门.md","articles":[]},{"title":"Apple Script操作其他应用","level":"1.5.12","depth":2,"path":"shell/AppleScript操作其他应用.md","ref":"shell/AppleScript操作其他应用.md","articles":[]},{"title":"Mac定时任务","level":"1.5.13","depth":2,"path":"shell/Mac定时任务.md","ref":"shell/Mac定时任务.md","articles":[]},{"title":"Automator导入头文件","level":"1.5.14","depth":2,"path":"shell/Automator导入头文件.md","ref":"shell/Automator导入头文件.md","articles":[]},{"title":"代码自动生成工具","level":"1.5.15","depth":2,"path":"shell/代码自动生成工具.md","ref":"shell/代码自动生成工具.md","articles":[]}]},"previous":{"title":"库","level":"1.4.4","depth":2,"path":"iOS/库.md","ref":"iOS/库.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"iOS/__weak 底层实现.md","mtime":"2020-06-15T02:06:52.960Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-15T08:00:22.865Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
