@@ -1,0 +1,3046 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Swift 派发问题 协议和子类到底使用哪个？？？ · 观星</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="观星">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Swift.html" />
+    
+    
+    <link rel="prev" href="Swift 泛型.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    C
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../C/关键 字.html">
+            
+                <a href="../../../C/关键 字.html">
+            
+                    
+                    关键 字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../C/指针.html">
+            
+                <a href="../../../C/指针.html">
+            
+                    
+                    指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../C/可变数组.html">
+            
+                <a href="../../../C/可变数组.html">
+            
+                    
+                    可变数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../C.html">
+            
+                <a href="../../../C.html">
+            
+                    
+                    C
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    android
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../../android/Activity生命周期.html">
+            
+                <a href="../../../android/Activity生命周期.html">
+            
+                    
+                    Activity生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../../android/Library.html">
+            
+                <a href="../../../android/Library.html">
+            
+                    
+                    Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../../android/LinearLayout.html">
+            
+                <a href="../../../android/LinearLayout.html">
+            
+                    
+                    LinearLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../../android/mac adb.html">
+            
+                <a href="../../../android/mac adb.html">
+            
+                    
+                    mac adb
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../../android.html">
+            
+                <a href="../../../android.html">
+            
+                    
+                    android
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    apple
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../Mac常用.html">
+            
+                <a href="../../Mac常用.html">
+            
+                    
+                    Mac常用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    iOS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../@IBInspectable @IBDesignable.html">
+            
+                <a href="../@IBInspectable @IBDesignable.html">
+            
+                    
+                    @IBInspectable @IBDesignable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../AFNetworking.html">
+            
+                <a href="../AFNetworking.html">
+            
+                    
+                    AFNetworking
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../App启动时间优化.html">
+            
+                <a href="../App启动时间优化.html">
+            
+                    
+                    App启动时间优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.4" data-path="../AutoreleasePoolPage.html">
+            
+                <a href="../AutoreleasePoolPage.html">
+            
+                    
+                    AutoreleasePoolPage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.5" data-path="../Carthage.html">
+            
+                <a href="../Carthage.html">
+            
+                    
+                    Carthage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.6" data-path="../Cell无需先注册.html">
+            
+                <a href="../Cell无需先注册.html">
+            
+                    
+                    Cell无需先注册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.7" data-path="../Cocoapods.html">
+            
+                <a href="../Cocoapods.html">
+            
+                    
+                    Cocoapods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.8" data-path="../Event.html">
+            
+                <a href="../Event.html">
+            
+                    
+                    Event
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.9" data-path="../FlexBox - YogaKit.html">
+            
+                <a href="../FlexBox - YogaKit.html">
+            
+                    
+                    FlexBox - YogaKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.10" data-path="../Framework.html">
+            
+                <a href="../Framework.html">
+            
+                    
+                    Framework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.11" data-path="../HandyJSON.html">
+            
+                <a href="../HandyJSON.html">
+            
+                    
+                    HandyJSON
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.12" data-path="../IPA.html">
+            
+                <a href="../IPA.html">
+            
+                    
+                    IPA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.13" data-path="../Jenkins自动打包.html">
+            
+                <a href="../Jenkins自动打包.html">
+            
+                    
+                    Jenkins自动打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.14" data-path="../LLDB.html">
+            
+                <a href="../LLDB.html">
+            
+                    
+                    LLDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.15" data-path="../Lock.html">
+            
+                <a href="../Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.16" data-path="../MVC & MVVM.html">
+            
+                <a href="../MVC & MVVM.html">
+            
+                    
+                    MVC & MVVM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.17" data-path="../Masonry.html">
+            
+                <a href="../Masonry.html">
+            
+                    
+                    Masonry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.18" data-path="../PerfDog.html">
+            
+                <a href="../PerfDog.html">
+            
+                    
+                    PerfDog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.19" data-path="../RAC.html">
+            
+                <a href="../RAC.html">
+            
+                    
+                    RAC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.20" data-path="../RACObserver.html">
+            
+                <a href="../RACObserver.html">
+            
+                    
+                    RACObserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.21" data-path="../RAC实现代理.html">
+            
+                <a href="../RAC实现代理.html">
+            
+                    
+                    RAC实现代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.22" data-path="../Reveal 4.html">
+            
+                <a href="../Reveal 4.html">
+            
+                    
+                    Reveal 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.23" data-path="../SDWebImage.html">
+            
+                <a href="../SDWebImage.html">
+            
+                    
+                    SDWebImage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.24" data-path="../SideTables.html">
+            
+                <a href="../SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25" >
+            
+                <span>
+            
+                    
+                    Swift
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.25.1" data-path="Class vs Struct.html">
+            
+                <a href="Class vs Struct.html">
+            
+                    
+                    Class vs Struct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.2" data-path="Moya.html">
+            
+                <a href="Moya.html">
+            
+                    
+                    Moya
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.3" data-path="Python & Swift 对比.html">
+            
+                <a href="Python & Swift 对比.html">
+            
+                    
+                    Python & Swift 对比
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.4" data-path="RxSwift.html">
+            
+                <a href="RxSwift.html">
+            
+                    
+                    RxSwift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.5" data-path="Self  self  type.html">
+            
+                <a href="Self  self  type.html">
+            
+                    
+                    Self  self  type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.6" data-path="Swift JSON 转 model.html">
+            
+                <a href="Swift JSON 转 model.html">
+            
+                    
+                    Swift JSON 转 model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.7" data-path="Swift Pointer.html">
+            
+                <a href="Swift Pointer.html">
+            
+                    
+                    Swift Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.8" data-path="Swift 枚举.html">
+            
+                <a href="Swift 枚举.html">
+            
+                    
+                    Swift 枚举
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.9" data-path="Swift 泛型.html">
+            
+                <a href="Swift 泛型.html">
+            
+                    
+                    Swift 泛型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2.25.10" data-path="Swift 派发问题 协议和子类到底使用哪个？？？.html">
+            
+                <a href="Swift 派发问题 协议和子类到底使用哪个？？？.html">
+            
+                    
+                    Swift 派发问题 协议和子类到底使用哪个？？？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.11" data-path="Swift.html">
+            
+                <a href="Swift.html">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.12" data-path="swift defer.html">
+            
+                <a href="swift defer.html">
+            
+                    
+                    swift defer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.13" data-path="swift 绘图.html">
+            
+                <a href="swift 绘图.html">
+            
+                    
+                    swift 绘图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.14" data-path="swift 脚本.html">
+            
+                <a href="swift 脚本.html">
+            
+                    
+                    swift 脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.25.15" data-path="swift 关键字.html">
+            
+                <a href="swift 关键字.html">
+            
+                    
+                    swift 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.26" data-path="../Swift 不同数据类型转换.html">
+            
+                <a href="../Swift 不同数据类型转换.html">
+            
+                    
+                    Swift 不同数据类型转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.27" data-path="../Tagged Point.html">
+            
+                <a href="../Tagged Point.html">
+            
+                    
+                    Tagged Point
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.28" data-path="../UI Tests.html">
+            
+                <a href="../UI Tests.html">
+            
+                    
+                    UI Tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.29" data-path="../UINavigationBar颜色相关.html">
+            
+                <a href="../UINavigationBar颜色相关.html">
+            
+                    
+                    UINavigationBar颜色相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.30" data-path="../UI布局.html">
+            
+                <a href="../UI布局.html">
+            
+                    
+                    UI布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.31" data-path="../VFL.html">
+            
+                <a href="../VFL.html">
+            
+                    
+                    VFL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.32" data-path="../WKWebView.html">
+            
+                <a href="../WKWebView.html">
+            
+                    
+                    WKWebView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.33" data-path="../iOS Instruments.html">
+            
+                <a href="../iOS Instruments.html">
+            
+                    
+                    iOS Instruments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.34" data-path="../iOS Mach-O加载过程.html">
+            
+                <a href="../iOS Mach-O加载过程.html">
+            
+                    
+                    iOS Mach-O加载过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.35" data-path="../iOS 开发.html">
+            
+                <a href="../iOS 开发.html">
+            
+                    
+                    iOS 开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.36" data-path="../iOS 多行字符串常量.html">
+            
+                <a href="../iOS 多行字符串常量.html">
+            
+                    
+                    iOS 多行字符串常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.37" data-path="../iOS&Android 使用对比.html">
+            
+                <a href="../iOS&Android 使用对比.html">
+            
+                    
+                    iOS&Android 使用对比
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.38" data-path="../valueForKeyPath.html">
+            
+                <a href="../valueForKeyPath.html">
+            
+                    
+                    valueForKeyPath
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.39" data-path="../weak底层实现.html">
+            
+                <a href="../weak底层实现.html">
+            
+                    
+                    weak底层实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.40" data-path="../库.html">
+            
+                <a href="../库.html">
+            
+                    
+                    库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.41" data-path="../将macro移除pch.html">
+            
+                <a href="../将macro移除pch.html">
+            
+                    
+                    将macro移除pch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.42" data-path="../死锁.html">
+            
+                <a href="../死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.43" data-path="../使用WKWebView加载长图.html">
+            
+                <a href="../使用WKWebView加载长图.html">
+            
+                    
+                    使用WKWebView加载长图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.44" data-path="../清理webview缓存.html">
+            
+                <a href="../清理webview缓存.html">
+            
+                    
+                    清理webview缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.45" data-path="../中间件.html">
+            
+                <a href="../中间件.html">
+            
+                    
+                    中间件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.46" data-path="../多线程.html">
+            
+                <a href="../多线程.html">
+            
+                    
+                    多线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.47" data-path="../运行时.html">
+            
+                <a href="../运行时.html">
+            
+                    
+                    运行时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.48" data-path="../音视频.html">
+            
+                <a href="../音视频.html">
+            
+                    
+                    音视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.49" data-path="../自定义present动画.html">
+            
+                <a href="../自定义present动画.html">
+            
+                    
+                    自定义present动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.50" data-path="../自定义push & pop 动画.html">
+            
+                <a href="../自定义push & pop 动画.html">
+            
+                    
+                    自定义push & pop 动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.51" data-path="../信鸽推送.html">
+            
+                <a href="../信鸽推送.html">
+            
+                    
+                    信鸽推送
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.52" data-path="../单元测试.html">
+            
+                <a href="../单元测试.html">
+            
+                    
+                    单元测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.53" data-path="../启动时间.html">
+            
+                <a href="../启动时间.html">
+            
+                    
+                    启动时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.54" data-path="../性能优化.html">
+            
+                <a href="../性能优化.html">
+            
+                    
+                    性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.55" data-path="../方法查找.html">
+            
+                <a href="../方法查找.html">
+            
+                    
+                    方法查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.56" data-path="../编译过程.html">
+            
+                <a href="../编译过程.html">
+            
+                    
+                    编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.57" data-path="../面试总结.html">
+            
+                <a href="../面试总结.html">
+            
+                    
+                    面试总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.58" data-path="../应用重签名.html">
+            
+                <a href="../应用重签名.html">
+            
+                    
+                    应用重签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.59" data-path="../观察者模式.html">
+            
+                <a href="../观察者模式.html">
+            
+                    
+                    观察者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.60" data-path="../修改类的前缀.html">
+            
+                <a href="../修改类的前缀.html">
+            
+                    
+                    修改类的前缀
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.61" data-path="../屏幕旋转问题.html">
+            
+                <a href="../屏幕旋转问题.html">
+            
+                    
+                    屏幕旋转问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.62" data-path="../应用程序状态.html">
+            
+                <a href="../应用程序状态.html">
+            
+                    
+                    应用程序状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.63" data-path="../为什么要使用RAC.html">
+            
+                <a href="../为什么要使用RAC.html">
+            
+                    
+                    为什么要使用RAC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.64" data-path="../代码自动生成工具.html">
+            
+                <a href="../代码自动生成工具.html">
+            
+                    
+                    代码自动生成工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.65" data-path="../简单的前端编译器.html">
+            
+                <a href="../简单的前端编译器.html">
+            
+                    
+                    简单的前端编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.66" data-path="../系统自带分享机制.html">
+            
+                <a href="../系统自带分享机制.html">
+            
+                    
+                    系统自带分享机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.67" data-path="../项目编译时间优化.html">
+            
+                <a href="../项目编译时间优化.html">
+            
+                    
+                    项目编译时间优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.68" data-path="../编码方式文件封装格式.html">
+            
+                <a href="../编码方式文件封装格式.html">
+            
+                    
+                    编码方式文件封装格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../iOS.html">
+            
+                <a href="../../iOS.html">
+            
+                    
+                    iOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    base
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../../base/MVC.html">
+            
+                <a href="../../../base/MVC.html">
+            
+                    
+                    MVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../../base/MVP.html">
+            
+                <a href="../../../base/MVP.html">
+            
+                    
+                    MVP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../../base/git.html">
+            
+                <a href="../../../base/git.html">
+            
+                    
+                    git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../../base/命名.html">
+            
+                <a href="../../../base/命名.html">
+            
+                    
+                    命名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../../base/数据结构.html">
+            
+                <a href="../../../base/数据结构.html">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../../base/策略模式.html">
+            
+                <a href="../../../base/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../../base/算法总结.html">
+            
+                <a href="../../../base/算法总结.html">
+            
+                    
+                    算法总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../../base/编程范式.html">
+            
+                <a href="../../../base/编程范式.html">
+            
+                    
+                    编程范式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../../base/中介者模式.html">
+            
+                <a href="../../../base/中介者模式.html">
+            
+                    
+                    中介者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../../base/批判性思维.html">
+            
+                <a href="../../../base/批判性思维.html">
+            
+                    
+                    批判性思维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../../base/变和不变的思考.html">
+            
+                <a href="../../../base/变和不变的思考.html">
+            
+                    
+                    变和不变的思考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../../base.html">
+            
+                <a href="../../../base.html">
+            
+                    
+                    base
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    java
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../../java/SpringBoot.html">
+            
+                <a href="../../../java/SpringBoot.html">
+            
+                    
+                    SpringBoot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../../java/java.html">
+            
+                <a href="../../../java/java.html">
+            
+                    
+                    java
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../../java/mybatis.html">
+            
+                <a href="../../../java/mybatis.html">
+            
+                    
+                    mybatis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../../java/shiro.html">
+            
+                <a href="../../../java/shiro.html">
+            
+                    
+                    shiro
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    mysql
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../../mysql/MySQL.html">
+            
+                <a href="../../../mysql/MySQL.html">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    other
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../../other/2018-10-08-香港.html">
+            
+                <a href="../../../other/2018-10-08-香港.html">
+            
+                    
+                    2018-10-08-香港
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../../other/Flutter.html">
+            
+                <a href="../../../other/Flutter.html">
+            
+                    
+                    Flutter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../../other/Tensorflow.html">
+            
+                <a href="../../../other/Tensorflow.html">
+            
+                    
+                    Tensorflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../../../other/django获取上传文件.html">
+            
+                <a href="../../../other/django获取上传文件.html">
+            
+                    
+                    django获取上传文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../../../other/方法.html">
+            
+                <a href="../../../other/方法.html">
+            
+                    
+                    方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../../../other/汇编.html">
+            
+                <a href="../../../other/汇编.html">
+            
+                    
+                    汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../../../other/驾考.html">
+            
+                <a href="../../../other/驾考.html">
+            
+                    
+                    驾考
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../../../other/依赖注入.html">
+            
+                <a href="../../../other/依赖注入.html">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../../../other/工厂模式.html">
+            
+                <a href="../../../other/工厂模式.html">
+            
+                    
+                    工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../../../other/效率提升.html">
+            
+                <a href="../../../other/效率提升.html">
+            
+                    
+                    效率提升
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../../../other/策略模式.html">
+            
+                <a href="../../../other/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../../../other/编程范式.html">
+            
+                <a href="../../../other/编程范式.html">
+            
+                    
+                    编程范式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../../../other/编译原理.html">
+            
+                <a href="../../../other/编译原理.html">
+            
+                    
+                    编译原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../../../other/金字塔原理.html">
+            
+                <a href="../../../other/金字塔原理.html">
+            
+                    
+                    金字塔原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="../../../other/脚本生成代码.html">
+            
+                <a href="../../../other/脚本生成代码.html">
+            
+                    
+                    脚本生成代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="../../../other/变和不变的思考.html">
+            
+                <a href="../../../other/变和不变的思考.html">
+            
+                    
+                    变和不变的思考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    shell
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../../shell/Apple Script入门.html">
+            
+                <a href="../../../shell/Apple Script入门.html">
+            
+                    
+                    Apple Script入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../../shell/AppleScript操作其他应用.html">
+            
+                <a href="../../../shell/AppleScript操作其他应用.html">
+            
+                    
+                    AppleScript操作其他应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../../shell/Automator导入头文件.html">
+            
+                <a href="../../../shell/Automator导入头文件.html">
+            
+                    
+                    Automator导入头文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../../shell/Mac Oh-My-Zsh.html">
+            
+                <a href="../../../shell/Mac Oh-My-Zsh.html">
+            
+                    
+                    Mac Oh-My-Zsh
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../../shell/Mac定时任务.html">
+            
+                <a href="../../../shell/Mac定时任务.html">
+            
+                    
+                    Mac定时任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../../shell/Shell JSON解析.html">
+            
+                <a href="../../../shell/Shell JSON解析.html">
+            
+                    
+                    Shell JSON解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../../shell/SpringBoot.html">
+            
+                <a href="../../../shell/SpringBoot.html">
+            
+                    
+                    SpringBoot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../../shell/awk.html">
+            
+                <a href="../../../shell/awk.html">
+            
+                    
+                    awk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../../shell/cp.html">
+            
+                <a href="../../../shell/cp.html">
+            
+                    
+                    cp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../../../shell/curl.html">
+            
+                <a href="../../../shell/curl.html">
+            
+                    
+                    curl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../../../shell/date.html">
+            
+                <a href="../../../shell/date.html">
+            
+                    
+                    date
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../../../shell/grep.html">
+            
+                <a href="../../../shell/grep.html">
+            
+                    
+                    grep
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../../../shell/sed.html">
+            
+                <a href="../../../shell/sed.html">
+            
+                    
+                    sed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.14" data-path="../../../shell/shell入门.html">
+            
+                <a href="../../../shell/shell入门.html">
+            
+                    
+                    shell入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.15" data-path="../../../shell/shell脚本在 iOS 中的应用.html">
+            
+                <a href="../../../shell/shell脚本在 iOS 中的应用.html">
+            
+                    
+                    shell脚本在 iOS 中的应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.16" data-path="../../../shell/svn命令行使用.html">
+            
+                <a href="../../../shell/svn命令行使用.html">
+            
+                    
+                    svn命令行使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.17" data-path="../../../shell/文件.html">
+            
+                <a href="../../../shell/文件.html">
+            
+                    
+                    文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.18" data-path="../../../shell/字符串.html">
+            
+                <a href="../../../shell/字符串.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.19" data-path="../../../shell/代码自动生成工具.html">
+            
+                <a href="../../../shell/代码自动生成工具.html">
+            
+                    
+                    代码自动生成工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.20" data-path="../../../shell/判断命令是否存在.html">
+            
+                <a href="../../../shell/判断命令是否存在.html">
+            
+                    
+                    判断命令是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../../shell.html">
+            
+                <a href="../../../shell.html">
+            
+                    
+                    shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Swift 派发问题 协议和子类到底使用哪个？？？</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;"><b></b>Swift &#x51FD;&#x6570;&#x6D3E;&#x53D1;</a></li><ul><li><span class="title-icon "></span><a href="#&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;"><b></b>&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;</a></li><li><span class="title-icon "></span><a href="#sil"><b></b>sil</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;"><a name="swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;" class="anchor-navigation-ex-anchor" href="#swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;" class="plugin-anchor" href="#swift-&#x51FD;&#x6570;&#x6D3E;&#x53D1;"><i class="fa fa-link" aria-hidden="true"></i></a>Swift &#x51FD;&#x6570;&#x6D3E;&#x53D1;</h2>
+<p>&#x4E00;&#x822C;&#x8C03;&#x7528;&#x8005;&#x662F;&#x4E0D;&#x7528;&#x5173;&#x5FC3;&#x51FD;&#x6570;&#x662F;&#x600E;&#x4E48;&#x6D3E;&#x53D1;&#x7684;&#xFF0C;&#x53EA;&#x8981;&#x786E;&#x5B9A;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x6267;&#x884C;&#x4E86;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x5728;&#x7F16;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x9047;&#x5230;&#x4E00;&#x4E9B;&#x5947;&#x602A;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x60F3;&#x8981;&#x77E5;&#x9053;&#x7B54;&#x6848;&#x7684;&#x8BDD;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x7EC6;&#x8282;&#x3002;</p>
+<h3 id="&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;"><a name="&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;" class="anchor-navigation-ex-anchor" href="#&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;" class="plugin-anchor" href="#&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x534F;&#x8BAE;&#x548C;&#x5B50;&#x7C7B;&#x5230;&#x5E95;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF1F;&#xFF1F;&#xFF1F;</h3>
+<pre><code>import Foundation
+
+protocol DataRefreshViewModelProtocol: AnyObject {
+    func refreshData()
+    func loadNextPageData()
+    func request(page: Int, limit: Int)
+}
+
+extension DataRefreshViewModelProtocol {
+    func refreshData() {
+        print(&quot;DataRefreshViewModelProtocol refreshData()&quot;)
+        request(page: 1, limit: 1)
+    }
+
+    func loadNextPageData() {
+        print(&quot;DataRefreshViewModelProtocol loadNextPageData()&quot;)
+        request(page: 2, limit: 1)
+    }
+
+    func request(page: Int, limit: Int) {
+        print(&quot;DataRefreshViewModelProtocol request(page: Int, limit: Int)&quot;)
+    }
+}
+
+class DefaultDataRefreshViewModel : NSObject,DataRefreshViewModelProtocol {
+    func refreshData() {
+        print(&quot;DefaultDataRefreshViewModel refreshData()&quot;)
+        request(page: 1, limit: 1)
+    }
+}
+
+class PageContainerDataRefreshViewModel : DefaultDataRefreshViewModel {
+    override func refreshData() {
+        print(&quot;PageContainerDataRefreshViewModel refreshData()&quot;)
+        // class_method
+        request(page: 1, limit: 1)
+    }
+
+    /// &#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x6DFB;&#x52A0; override&#xFF0C;&#x5728;&#x6D3E;&#x53D1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x8D70;&#x534F;&#x8BAE;&#x7684;witness table,&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x6CE8;&#x518C;&#x5230;witness table,
+    /// &#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;&#x534F;&#x8BAE;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;
+    func loadNextPageData() {
+        print(&quot;PageContainerDataRefreshViewModel loadNextPageData()&quot;)
+        request(page: 2, limit: 1)
+    }
+
+    func request(page: Int, limit: Int) {
+        print(&quot;PageContainerDataRefreshViewModel request(page: Int, limit: Int)&quot;)
+    }
+}
+
+let vm : DefaultDataRefreshViewModel = PageContainerDataRefreshViewModel()
+
+vm.refreshData()
+// PageContainerDataRefreshViewModel refreshData()
+// PageContainerDataRefreshViewModel request(page: Int, limit: Int)
+vm.request(page: 1, limit: 1)
+// DataRefreshViewModelProtocol request(page: Int, limit: Int)
+vm.loadNextPageData()
+// DataRefreshViewModelProtocol loadNextPageData()
+// DataRefreshViewModelProtocol request(page: Int, limit: Int)
+</code></pre><h3 id="sil"><a name="sil" class="anchor-navigation-ex-anchor" href="#sil"><i class="fa fa-link" aria-hidden="true"></i></a><a name="sil" class="plugin-anchor" href="#sil"><i class="fa fa-link" aria-hidden="true"></i></a>sil</h3>
+<pre><code>swiftc -emit-sil MyProtocolPlayground.playground/Contents.swift | xcrun swift-demangle &gt; ClassFunc.silgen
+</code></pre><p><code>%0&#x3001;%1 ...</code>&#xFF1A;&#x8FD9;&#x4E9B;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E34;&#x65F6;&#x53D8;&#x91CF;</p>
+<p><code>function_ref</code>&#xFF1A;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x5730;&#x5740;&#xFF0C;&#x83B7;&#x53D6;&#x4E86;&#x5730;&#x5740;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6267;&#x884C;</p>
+<p><code>apply x(y)</code>&#xFF1A;apply&#x5C31;&#x4EE3;&#x8868;&#x6267;&#x884C;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#xFF0C; x&#x4EE3;&#x8868;&#x90A3;&#x4E2A;&#x51FD;&#x6570; &#xFF0C;y&#x6307;&#x7684;&#x662F;&#x53C2;&#x6570;</p>
+<p><code>v-table</code> :class &#x7C7B;&#x578B;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x865A;&#x51FD;&#x6570;&#x8868;&#xFF0C;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x67E5;&#x627E;&#xFF0C;&#x591A;&#x6001;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5148;&#x641C;&#x7D22;&#x5B50;&#x7C7B;&#x7684;&#x865A;&#x51FD;&#x6570;&#x8868;</p>
+<p><code>class_method</code> &#xFF1A;&#x67E5;&#x627E;&#x865A;&#x51FD;&#x6570;&#x8868;&#x5230;&#x5177;&#x4F53;&#x7684;&#x51FD;&#x6570;</p>
+<p><code>objc_method</code>: &#x6D88;&#x606F;&#x67E5;&#x627E;&#xFF0C;&#x901A;&#x8FC7;objc_method &#x67E5;&#x627E;&#x6D3E;&#x53D1;&#x8868;&#x5F97;&#x5230;chunk&#x51FD;&#x6570;&#xFF0C;chunk&#x51FD;&#x6570;&#x548C;&#x51FD;&#x6570;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x3002;</p>
+<h4 id="metatype&#x7C7B;&#x578B;"><a name="metatype&#x7C7B;&#x578B;" class="anchor-navigation-ex-anchor" href="#metatype&#x7C7B;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="metatype&#x7C7B;&#x578B;" class="plugin-anchor" href="#metatype&#x7C7B;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Metatype&#x7C7B;&#x578B;</h4>
+<p><code>SIL</code>&#x5185;&#x7684;metatype&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x63CF;&#x8FF0;&#x81EA;&#x8EAB;&#x8868;&#x793A;&#xFF1A;</p>
+<ul>
+<li><code>@thin</code> &#x610F;&#x601D;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5185;&#x5B58;</li>
+<li><code>@thick</code> &#x6307;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x7C7B;&#x578B;&#x7684;&#x5F15;&#x7528;&#x6216;&#x7C7B;&#x578B;&#x5B50;&#x7C7B;&#x7684;&#x5F15;&#x7528;</li>
+<li><code>@objc</code> &#x6307;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x4E00;&#x4E2A;OC&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x8868;&#x793A;&#x800C;&#x4E0D;&#x662F;Swift&#x7C7B;&#x578B;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<h4 id="&#x51FD;&#x6570;&#x7C7B;&#x578B;"><a name="&#x51FD;&#x6570;&#x7C7B;&#x578B;" class="anchor-navigation-ex-anchor" href="#&#x51FD;&#x6570;&#x7C7B;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x51FD;&#x6570;&#x7C7B;&#x578B;" class="plugin-anchor" href="#&#x51FD;&#x6570;&#x7C7B;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x51FD;&#x6570;&#x7C7B;&#x578B;</h4>
+<p><code>SIL</code>&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x548C;Swift&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x6709;&#x4EE5;&#x4E0B;&#x533A;&#x522B;&#xFF1A;</p>
+<ul>
+<li><p><code>SIL</code>&#x51FD;&#x6570;&#x53EF;&#x80FD;&#x662F;&#x6CDB;&#x578B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x901A;&#x8FC7;<code>function_ref</code>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x3002;</p>
+</li>
+<li><p><code>SIL</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#x4E3A;<code>@noescape</code>&#x3002;<code>@noescape</code>&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x662F;<code>convention(thin)</code>&#x6216;&#x8005;<code>@callee_guatanteed</code>&#x3002;</p>
+</li>
+<li><p><code>SIL</code>&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x58F0;&#x660E;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5904;&#x7406;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x60C5;&#x666F;&#xFF1A;</p>
+<ul>
+<li><code>@convention(thin)</code>&#x4E0D;&#x8981;&#x6C42;&#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>@noescape</code>&#x58F0;&#x660E;&#x3002;</li>
+<li><code>@callee_guatanteed</code>&#x4F1A;&#x88AB;&#x8BA4;&#x4E3A;&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x3002;&#x4E5F;&#x610F;&#x5473;&#x7740;<code>convention(thick)</code>&#x3002;</li>
+<li><code>@callee_owned</code>&#x4E0A;&#x4E0B;&#x6587;&#x503C;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4E0D;&#x62E5;&#x6709;&#x7684;&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x3002;&#x4E5F;&#x610F;&#x5473;&#x7740;<code>convention(thick)</code>&#x3002;</li>
+<li><code>@convention(block)</code>&#x4E0A;&#x4E0B;&#x6587;&#x503C;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4E0D;&#x62E5;&#x6709;&#x7684;&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x4F1A;&#x88AB;&#x63CF;&#x8FF0;&#x4E3A;<code>Properties of Types</code> &#x548C; <code>Calling Convention</code></li>
+</ul>
+</li>
+<li><p><code>SIL</code>&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x58F0;&#x660E;&#x53C2;&#x6570;&#x7684;&#x534F;&#x8BAE;&#x3002;&#x975E;&#x76F4;&#x63A5;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;<code>*T</code>,&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x662F;<code>T</code></p>
+<ul>
+<li><code>@in</code>&#x662F;&#x975E;&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x3002;&#x5730;&#x5740;&#x5FC5;&#x987B;&#x662F;&#x5DF2;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x9500;&#x6BC1;&#x5185;&#x90E8;&#x6301;&#x6709;&#x7684;&#x503C;&#x3002;</li>
+<li><code>@inout</code>&#x662F;&#x975E;&#x76F4;&#x63A5;&#x53C2;&#x6570;&#x3002;&#x5185;&#x5B58;&#x5FC5;&#x987B;&#x662F;&#x5DF2;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x5185;&#x5B58;&#x662F;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x7684;&#x3002;</li>
+</ul>
+</li>
+<li><p><code>SIL</code>&#x51FD;&#x6570;&#x9700;&#x8981;&#x58F0;&#x660E;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
+<ul>
+<li><code>@out</code>&#x662F;&#x975E;&#x76F4;&#x63A5;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x5730;&#x5740;&#x5FC5;&#x987B;&#x662F;&#x672A;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<p><code>SIL</code>&#x4F7F;&#x7528;<a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#class-method" target="_blank">class_method</a>, <a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#super-method" target="_blank">super_method</a>, <a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#objc-method" target="_blank">objc_method</a>,&#x548C; <a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#objc-super-method" target="_blank">objc_super_method</a>&#x6765;&#x8868;&#x793A;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x52A8;&#x6001;&#x5206;&#x6D3E;<code>dynamic dispatch</code><a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#class-method" target="_blank">class_method</a> &#x548C; <a href="https://github.com/apple/swift/blob/2ddc92a51a4c6d216a9b2dc3a2e41e9b592afbdf/docs/SIL.rst#super-method" target="_blank">super_method</a>&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x901A;&#x8FC7;<code>sil_vtable</code>&#x8FDB;&#x884C;&#x8FFD;&#x8E2A;&#x7684;.<code>sil_vtable</code>&#x7684;&#x58F0;&#x660E;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;.</p>
+</li>
+</ul>
+<blockquote>
+<p>let vm : DefaultDataRefreshViewModel = PageContainerDataRefreshViewModel()</p>
+<p>vm.refreshData()</p>
+</blockquote>
+<pre><code>sil_vtable PageContainerDataRefreshViewModel {
+  #DefaultDataRefreshViewModel.refreshData!1: (DefaultDataRefreshViewModel) -&gt; () -&gt; () : @Contents.PageContainerDataRefreshViewModel.refreshData() -&gt; () [override]    // PageContainerDataRefreshViewModel.refreshData()
+}
+</code></pre><p>&#x5728;v-table&#x4E2D; DefaultDataRefreshViewModel.refreshData &#x6620;&#x5C04;&#x5230;&#x4E86; PageContainerDataRefreshViewModel.refreshData&#xFF0C;&#x6240;&#x4EE5;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x8C03;&#x7528;&#x7684;&#x662F;PageContainerDataRefreshViewModel&#x7684;refreshData&#x3002;</p>
+<blockquote>
+<p>let vm : DefaultDataRefreshViewModel = PageContainerDataRefreshViewModel()</p>
+<p>vm.loadNextPageData()</p>
+</blockquote>
+<p>&#x5728;&#x865A;&#x8868;&#x4E2D;</p>
+<pre><code>
+
+</code></pre><p> DefaultDataRefreshViewModel.loadNextPageData &#x5E76;&#x6CA1;&#x6709;&#x6620;&#x5C04;&#x5230; PageContainerDataRefreshViewModel.loadNextPageData ,&#x6240;&#x4EE5;</p>
+<p><code>vm.loadNextPageData</code>&#x8C03;&#x7528;&#x7684;&#x662F; DefaultDataRefreshViewModel.loadNextPageData &#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x534F;&#x8BAE;DataRefreshViewModelProtocol&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x3002;</p>
+<blockquote>
+<p>request(page: Int, limit: Int)</p>
+</blockquote>
+<pre><code>sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import Foundation
+
+protocol DataRefreshViewModelProtocol : AnyObject {
+  func refreshData()
+  func loadNextPageData()
+  func request(page: Int, limit: Int)
+}
+
+extension DataRefreshViewModelProtocol {
+  func refreshData()
+  func loadNextPageData()
+  func request(page: Int, limit: Int)
+}
+
+@objc @_inheritsConvenienceInitializers class DefaultDataRefreshViewModel : NSObject, DataRefreshViewModelProtocol {
+  func refreshData()
+  @objc deinit
+  override dynamic init()
+}
+
+@objc @_inheritsConvenienceInitializers class PageContainerDataRefreshViewModel : DefaultDataRefreshViewModel {
+  override func refreshData()
+  func loadNextPageData()
+  func request(page: Int, limit: Int)
+  @objc deinit
+  override dynamic init()
+}
+
+@_hasStorage @_hasInitialValue let vm: DefaultDataRefreshViewModel { get }
+
+// vm
+sil_global hidden [let] @Contents.vm : Contents.DefaultDataRefreshViewModel : $DefaultDataRefreshViewModel
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer&lt;Optional&lt;UnsafeMutablePointer&lt;Int8&gt;&gt;&gt;) -&gt; Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer&lt;Optional&lt;UnsafeMutablePointer&lt;Int8&gt;&gt;&gt;):
+  alloc_global @Contents.vm : Contents.DefaultDataRefreshViewModel // id: %2
+
+  %3 = global_addr @Contents.vm : Contents.DefaultDataRefreshViewModel : $*DefaultDataRefreshViewModel // users: %12, %9, %8
+
+  %4 = metatype $@thick PageContainerDataRefreshViewModel.Type // user: %6
+
+  // function_ref PageContainerDataRefreshViewModel.__allocating_init()
+
+  %5 = function_ref @Contents.PageContainerDataRefreshViewModel.__allocating_init() -&gt; Contents.PageContainerDataRefreshViewModel : $@convention(method) 
+  (@thick PageContainerDataRefreshViewModel.Type) -&gt; @owned PageContainerDataRefreshViewModel // user: %6
+
+  %6 = apply %5(%4) : $@convention(method) (@thick PageContainerDataRefreshViewModel.Type) -&gt; @owned PageContainerDataRefreshViewModel // user: %7
+
+  %7 = upcast %6 : $PageContainerDataRefreshViewModel to $DefaultDataRefreshViewModel // user: %8
+
+  store %7 to %3 : $*DefaultDataRefreshViewModel  // id: %8
+
+  %9 = load %3 : $*DefaultDataRefreshViewModel    // users: %10, %11
+
+  %10 = class_method %9 : $DefaultDataRefreshViewModel, #DefaultDataRefreshViewModel.refreshData!1 : (DefaultDataRefreshViewModel) -&gt; () -&gt; (), $@convention(method) (@guaranteed DefaultDataRefreshViewModel) -&gt; () // user: %11
+
+  %11 = apply %10(%9) : $@convention(method) (@guaranteed DefaultDataRefreshViewModel) -&gt; ()
+
+  %12 = load %3 : $*DefaultDataRefreshViewModel   // user: %14
+
+  // function_ref DataRefreshViewModelProtocol.loadNextPageData()
+  %13 = function_ref @(extension in Contents):Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (@guaranteed &#x3C4;_0_0) -&gt; () // user: %14
+  %14 = apply %13&lt;DefaultDataRefreshViewModel&gt;(%12) : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (@guaranteed &#x3C4;_0_0) -&gt; ()
+  %15 = integer_literal $Builtin.Int32, 0         // user: %16
+  %16 = struct $Int32 (%15 : $Builtin.Int32)      // user: %17
+  return %16 : $Int32                             // id: %17
+} // end sil function &apos;main&apos;
+
+
+// DataRefreshViewModelProtocol.refreshData()
+sil hidden @(extension in Contents):Contents.DataRefreshViewModelProtocol.refreshData() -&gt; () : $@convention(method) &lt;Self where Self : DataRefreshViewModelProtocol&gt; (@guaranteed Self) -&gt; () {
+// %0                                             // users: %30, %1
+bb0(%0 : $Self):
+  debug_value %0 : $Self, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %4
+  %4 = apply %3&lt;Any&gt;(%2) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %24, %21
+  %6 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %14
+  %8 = string_literal utf8 &quot;DataRefreshViewModelProtocol refreshData()&quot; // user: %13
+  %9 = integer_literal $Builtin.Word, 42          // user: %13
+  %10 = integer_literal $Builtin.Int1, -1         // user: %13
+  %11 = metatype $@thin String.Type               // user: %13
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %12 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %13
+  %13 = apply %12(%8, %9, %10, %11) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %15
+  %14 = init_existential_addr %7 : $*Any, $String // user: %15
+  store %13 to %14 : $*String                     // id: %15
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %16 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %17
+  %17 = apply %16() : $@convention(thin) () -&gt; @owned String // users: %23, %21
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %18 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %19
+  %19 = apply %18() : $@convention(thin) () -&gt; @owned String // users: %22, %21
+  // function_ref print(_:separator:terminator:)
+  %20 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %21
+  %21 = apply %20(%5, %17, %19) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %19 : $String                     // id: %22
+  release_value %17 : $String                     // id: %23
+  release_value %5 : $Array&lt;Any&gt;                  // id: %24
+  %25 = integer_literal $Builtin.Int64, 1         // user: %26
+  %26 = struct $Int (%25 : $Builtin.Int64)        // user: %30
+  %27 = integer_literal $Builtin.Int64, 1         // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %30
+  %29 = witness_method $Self, #DataRefreshViewModelProtocol.request!1 : &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Self) -&gt; (Int, Int) -&gt; () : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; () // user: %30
+  %30 = apply %29&lt;Self&gt;(%26, %28, %0) : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; ()
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function &apos;(extension in Contents):Contents.DataRefreshViewModelProtocol.refreshData() -&gt; ()&apos;
+
+// _allocateUninitializedArray&lt;A&gt;(_:)
+sil [serialized] [always_inline] [_semantics &quot;array.uninitialized_intrinsic&quot;] @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer)
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [serialized] [always_inline] [readonly] [_semantics &quot;string.makeUTF8&quot;] @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String
+
+// default argument 1 of print(_:separator:terminator:)
+sil shared_external [serialized] @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String {
+bb0:
+  %0 = string_literal utf8 &quot; &quot;                    // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function &apos;default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; ()&apos;
+
+// default argument 2 of print(_:separator:terminator:)
+sil shared_external [serialized] @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String {
+bb0:
+  %0 = string_literal utf8 &quot;\n&quot;                   // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function &apos;default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; ()&apos;
+
+// print(_:separator:terminator:)
+sil @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+
+// Int.init(_builtinIntegerLiteral:)
+sil public_external [transparent] [serialized] @Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -&gt; Swift.Int : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -&gt; Int {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
+  %2 = builtin &quot;s_to_s_checked_trunc_IntLiteral_Int64&quot;(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
+  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  return %4 : $Int                                // id: %5
+} // end sil function &apos;Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -&gt; Swift.Int&apos;
+
+// DataRefreshViewModelProtocol.loadNextPageData()
+sil hidden @(extension in Contents):Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () : $@convention(method) &lt;Self where Self : DataRefreshViewModelProtocol&gt; (@guaranteed Self) -&gt; () {
+// %0                                             // users: %30, %1
+bb0(%0 : $Self):
+  debug_value %0 : $Self, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %4
+  %4 = apply %3&lt;Any&gt;(%2) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %24, %21
+  %6 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %14
+  %8 = string_literal utf8 &quot;DataRefreshViewModelProtocol loadNextPageData()&quot; // user: %13
+  %9 = integer_literal $Builtin.Word, 47          // user: %13
+  %10 = integer_literal $Builtin.Int1, -1         // user: %13
+  %11 = metatype $@thin String.Type               // user: %13
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %12 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %13
+  %13 = apply %12(%8, %9, %10, %11) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %15
+  %14 = init_existential_addr %7 : $*Any, $String // user: %15
+  store %13 to %14 : $*String                     // id: %15
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %16 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %17
+  %17 = apply %16() : $@convention(thin) () -&gt; @owned String // users: %23, %21
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %18 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %19
+  %19 = apply %18() : $@convention(thin) () -&gt; @owned String // users: %22, %21
+  // function_ref print(_:separator:terminator:)
+  %20 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %21
+  %21 = apply %20(%5, %17, %19) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %19 : $String                     // id: %22
+  release_value %17 : $String                     // id: %23
+  release_value %5 : $Array&lt;Any&gt;                  // id: %24
+  %25 = integer_literal $Builtin.Int64, 2         // user: %26
+  %26 = struct $Int (%25 : $Builtin.Int64)        // user: %30
+  %27 = integer_literal $Builtin.Int64, 1         // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %30
+  %29 = witness_method $Self, #DataRefreshViewModelProtocol.request!1 : &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Self) -&gt; (Int, Int) -&gt; () : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; () // user: %30
+  %30 = apply %29&lt;Self&gt;(%26, %28, %0) : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; ()
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function &apos;(extension in Contents):Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; ()&apos;
+
+// DataRefreshViewModelProtocol.request(page:limit:)
+sil hidden @(extension in Contents):Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () : $@convention(method) &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed Self) -&gt; () {
+// %0                                             // user: %3
+// %1                                             // user: %4
+// %2                                             // user: %5
+bb0(%0 : $Int, %1 : $Int, %2 : $Self):
+  debug_value %0 : $Int, let, name &quot;page&quot;, argno 1 // id: %3
+  debug_value %1 : $Int, let, name &quot;limit&quot;, argno 2 // id: %4
+  debug_value %2 : $Self, let, name &quot;self&quot;, argno 3 // id: %5
+  %6 = integer_literal $Builtin.Word, 1           // user: %8
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %7 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %8
+  %8 = apply %7&lt;Any&gt;(%6) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %10, %9
+  %9 = tuple_extract %8 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %28, %25
+  %10 = tuple_extract %8 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %11
+  %11 = pointer_to_address %10 : $Builtin.RawPointer to [strict] $*Any // user: %18
+  %12 = string_literal utf8 &quot;DataRefreshViewModelProtocol request(page: Int, limit: Int)&quot; // user: %17
+  %13 = integer_literal $Builtin.Word, 59         // user: %17
+  %14 = integer_literal $Builtin.Int1, -1         // user: %17
+  %15 = metatype $@thin String.Type               // user: %17
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %16 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %17
+  %17 = apply %16(%12, %13, %14, %15) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %19
+  %18 = init_existential_addr %11 : $*Any, $String // user: %19
+  store %17 to %18 : $*String                     // id: %19
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %20 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %21
+  %21 = apply %20() : $@convention(thin) () -&gt; @owned String // users: %27, %25
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %22 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %23
+  %23 = apply %22() : $@convention(thin) () -&gt; @owned String // users: %26, %25
+  // function_ref print(_:separator:terminator:)
+  %24 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %25
+  %25 = apply %24(%9, %21, %23) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %23 : $String                     // id: %26
+  release_value %21 : $String                     // id: %27
+  release_value %9 : $Array&lt;Any&gt;                  // id: %28
+  %29 = tuple ()                                  // user: %30
+  return %29 : $()                                // id: %30
+} // end sil function &apos;(extension in Contents):Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; ()&apos;
+
+// DefaultDataRefreshViewModel.refreshData()
+sil hidden @Contents.DefaultDataRefreshViewModel.refreshData() -&gt; () : $@convention(method) (@guaranteed DefaultDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %30, %1
+bb0(%0 : $DefaultDataRefreshViewModel):
+  debug_value %0 : $DefaultDataRefreshViewModel, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %4
+  %4 = apply %3&lt;Any&gt;(%2) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %24, %21
+  %6 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %14
+  %8 = string_literal utf8 &quot;DefaultDataRefreshViewModel refreshData()&quot; // user: %13
+  %9 = integer_literal $Builtin.Word, 41          // user: %13
+  %10 = integer_literal $Builtin.Int1, -1         // user: %13
+  %11 = metatype $@thin String.Type               // user: %13
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %12 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %13
+  %13 = apply %12(%8, %9, %10, %11) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %15
+  %14 = init_existential_addr %7 : $*Any, $String // user: %15
+  store %13 to %14 : $*String                     // id: %15
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %16 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %17
+  %17 = apply %16() : $@convention(thin) () -&gt; @owned String // users: %23, %21
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %18 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %19
+  %19 = apply %18() : $@convention(thin) () -&gt; @owned String // users: %22, %21
+  // function_ref print(_:separator:terminator:)
+  %20 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %21
+  %21 = apply %20(%5, %17, %19) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %19 : $String                     // id: %22
+  release_value %17 : $String                     // id: %23
+  release_value %5 : $Array&lt;Any&gt;                  // id: %24
+  %25 = integer_literal $Builtin.Int64, 1         // user: %26
+  %26 = struct $Int (%25 : $Builtin.Int64)        // user: %30
+  %27 = integer_literal $Builtin.Int64, 1         // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %30
+  // function_ref DataRefreshViewModelProtocol.request(page:limit:)
+  %29 = function_ref @(extension in Contents):Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; () // user: %30
+  %30 = apply %29&lt;DefaultDataRefreshViewModel&gt;(%26, %28, %0) : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; ()
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function &apos;Contents.DefaultDataRefreshViewModel.refreshData() -&gt; ()&apos;
+
+// DefaultDataRefreshViewModel.__deallocating_deinit
+sil hidden @Contents.DefaultDataRefreshViewModel.__deallocating_deinit : $@convention(method) (@owned DefaultDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %3, %2, %1
+bb0(%0 : $DefaultDataRefreshViewModel):
+  debug_value %0 : $DefaultDataRefreshViewModel, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = objc_super_method %0 : $DefaultDataRefreshViewModel, #NSObject.deinit!deallocator.1.foreign : (NSObject) -&gt; () -&gt; (), $@convention(objc_method) (NSObject) -&gt; () // user: %4
+  %3 = upcast %0 : $DefaultDataRefreshViewModel to $NSObject // user: %4
+  %4 = apply %2(%3) : $@convention(objc_method) (NSObject) -&gt; ()
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+} // end sil function &apos;Contents.DefaultDataRefreshViewModel.__deallocating_deinit&apos;
+
+// DefaultDataRefreshViewModel.__allocating_init()
+sil hidden @Contents.DefaultDataRefreshViewModel.__allocating_init() -&gt; Contents.DefaultDataRefreshViewModel : $@convention(method) (@thick DefaultDataRefreshViewModel.Type) -&gt; @owned DefaultDataRefreshViewModel {
+// %0                                             // user: %1
+bb0(%0 : $@thick DefaultDataRefreshViewModel.Type):
+  %1 = thick_to_objc_metatype %0 : $@thick DefaultDataRefreshViewModel.Type to $@objc_metatype DefaultDataRefreshViewModel.Type // user: %2
+  %2 = alloc_ref_dynamic [objc] %1 : $@objc_metatype DefaultDataRefreshViewModel.Type, $DefaultDataRefreshViewModel // users: %4, %3
+  %3 = objc_method %2 : $DefaultDataRefreshViewModel, #DefaultDataRefreshViewModel.init!initializer.1.foreign : (DefaultDataRefreshViewModel.Type) -&gt; () -&gt; DefaultDataRefreshViewModel, $@convention(objc_method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %4
+  %4 = apply %3(%2) : $@convention(objc_method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %5
+  return %4 : $DefaultDataRefreshViewModel        // id: %5
+} // end sil function &apos;Contents.DefaultDataRefreshViewModel.__allocating_init() -&gt; Contents.DefaultDataRefreshViewModel&apos;
+
+// DefaultDataRefreshViewModel.init()
+sil hidden @Contents.DefaultDataRefreshViewModel.init() -&gt; Contents.DefaultDataRefreshViewModel : $@convention(method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel {
+// %0                                             // user: %2
+bb0(%0 : $DefaultDataRefreshViewModel):
+  %1 = alloc_stack $DefaultDataRefreshViewModel, let, name &quot;self&quot; // users: %10, %3, %2, %11, %12
+  store %0 to %1 : $*DefaultDataRefreshViewModel  // id: %2
+  %3 = load %1 : $*DefaultDataRefreshViewModel    // user: %4
+  %4 = upcast %3 : $DefaultDataRefreshViewModel to $NSObject // users: %5, %7
+  %5 = unchecked_ref_cast %4 : $NSObject to $DefaultDataRefreshViewModel // user: %6
+  %6 = objc_super_method %5 : $DefaultDataRefreshViewModel, #NSObject.init!initializer.1.foreign : (NSObject.Type) -&gt; () -&gt; NSObject, $@convention(objc_method) (@owned NSObject) -&gt; @owned NSObject // user: %7
+  %7 = apply %6(%4) : $@convention(objc_method) (@owned NSObject) -&gt; @owned NSObject // user: %8
+  %8 = unchecked_ref_cast %7 : $NSObject to $DefaultDataRefreshViewModel // users: %13, %10, %9
+  strong_retain %8 : $DefaultDataRefreshViewModel // id: %9
+  store %8 to %1 : $*DefaultDataRefreshViewModel  // id: %10
+  destroy_addr %1 : $*DefaultDataRefreshViewModel // id: %11
+  dealloc_stack %1 : $*DefaultDataRefreshViewModel // id: %12
+  return %8 : $DefaultDataRefreshViewModel        // id: %13
+} // end sil function &apos;Contents.DefaultDataRefreshViewModel.init() -&gt; Contents.DefaultDataRefreshViewModel&apos;
+
+// @objc DefaultDataRefreshViewModel.init()
+sil hidden [thunk] @@objc Contents.DefaultDataRefreshViewModel.init() -&gt; Contents.DefaultDataRefreshViewModel : $@convention(objc_method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel {
+// %0                                             // user: %2
+bb0(%0 : $DefaultDataRefreshViewModel):
+  // function_ref DefaultDataRefreshViewModel.init()
+  %1 = function_ref @Contents.DefaultDataRefreshViewModel.init() -&gt; Contents.DefaultDataRefreshViewModel : $@convention(method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %3
+  return %2 : $DefaultDataRefreshViewModel        // id: %3
+} // end sil function &apos;@objc Contents.DefaultDataRefreshViewModel.init() -&gt; Contents.DefaultDataRefreshViewModel&apos;
+
+// protocol witness for DataRefreshViewModelProtocol.refreshData() in conformance DefaultDataRefreshViewModel
+sil private [transparent] [thunk] @protocol witness for Contents.DataRefreshViewModelProtocol.refreshData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents : $@convention(witness_method: DataRefreshViewModelProtocol) (@guaranteed DefaultDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %2, %1
+bb0(%0 : $DefaultDataRefreshViewModel):
+  %1 = class_method %0 : $DefaultDataRefreshViewModel, #DefaultDataRefreshViewModel.refreshData!1 : (DefaultDataRefreshViewModel) -&gt; () -&gt; (), $@convention(method) (@guaranteed DefaultDataRefreshViewModel) -&gt; () // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@guaranteed DefaultDataRefreshViewModel) -&gt; ()
+  %3 = tuple ()                                   // user: %4
+  return %3 : $()                                 // id: %4
+} // end sil function &apos;protocol witness for Contents.DataRefreshViewModelProtocol.refreshData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents&apos;
+
+// protocol witness for DataRefreshViewModelProtocol.loadNextPageData() in conformance DefaultDataRefreshViewModel
+sil private [transparent] [thunk] @protocol witness for Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DefaultDataRefreshViewModel&gt; (@guaranteed &#x3C4;_0_0) -&gt; () {
+// %0                                             // user: %2
+bb0(%0 : $&#x3C4;_0_0):
+  // function_ref DataRefreshViewModelProtocol.loadNextPageData()
+  %1 = function_ref @(extension in Contents):Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (@guaranteed &#x3C4;_0_0) -&gt; () // user: %2
+  %2 = apply %1&lt;&#x3C4;_0_0&gt;(%0) : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (@guaranteed &#x3C4;_0_0) -&gt; ()
+  %3 = tuple ()                                   // user: %4
+  return %3 : $()                                 // id: %4
+} // end sil function &apos;protocol witness for Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents&apos;
+
+// protocol witness for DataRefreshViewModelProtocol.request(page:limit:) in conformance DefaultDataRefreshViewModel
+sil private [transparent] [thunk] @protocol witness for Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents : $@convention(witness_method: DataRefreshViewModelProtocol) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DefaultDataRefreshViewModel&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; () {
+// %0                                             // user: %4
+// %1                                             // user: %4
+// %2                                             // user: %4
+bb0(%0 : $Int, %1 : $Int, %2 : $&#x3C4;_0_0):
+  // function_ref DataRefreshViewModelProtocol.request(page:limit:)
+  %3 = function_ref @(extension in Contents):Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; () // user: %4
+  %4 = apply %3&lt;&#x3C4;_0_0&gt;(%0, %1, %2) : $@convention(method) &lt;&#x3C4;_0_0 where &#x3C4;_0_0 : DataRefreshViewModelProtocol&gt; (Int, Int, @guaranteed &#x3C4;_0_0) -&gt; ()
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+} // end sil function &apos;protocol witness for Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents&apos;
+
+// PageContainerDataRefreshViewModel.refreshData()
+sil hidden @Contents.PageContainerDataRefreshViewModel.refreshData() -&gt; () : $@convention(method) (@guaranteed PageContainerDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %30, %29, %1
+bb0(%0 : $PageContainerDataRefreshViewModel):
+  debug_value %0 : $PageContainerDataRefreshViewModel, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %4
+  %4 = apply %3&lt;Any&gt;(%2) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %24, %21
+  %6 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %14
+  %8 = string_literal utf8 &quot;PageContainerDataRefreshViewModel refreshData()&quot; // user: %13
+  %9 = integer_literal $Builtin.Word, 47          // user: %13
+  %10 = integer_literal $Builtin.Int1, -1         // user: %13
+  %11 = metatype $@thin String.Type               // user: %13
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %12 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %13
+  %13 = apply %12(%8, %9, %10, %11) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %15
+  %14 = init_existential_addr %7 : $*Any, $String // user: %15
+  store %13 to %14 : $*String                     // id: %15
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %16 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %17
+  %17 = apply %16() : $@convention(thin) () -&gt; @owned String // users: %23, %21
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %18 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %19
+  %19 = apply %18() : $@convention(thin) () -&gt; @owned String // users: %22, %21
+  // function_ref print(_:separator:terminator:)
+  %20 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %21
+  %21 = apply %20(%5, %17, %19) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %19 : $String                     // id: %22
+  release_value %17 : $String                     // id: %23
+  release_value %5 : $Array&lt;Any&gt;                  // id: %24
+  %25 = integer_literal $Builtin.Int64, 1         // user: %26
+  %26 = struct $Int (%25 : $Builtin.Int64)        // user: %30
+  %27 = integer_literal $Builtin.Int64, 1         // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %30
+  %29 = class_method %0 : $PageContainerDataRefreshViewModel, #PageContainerDataRefreshViewModel.request!1 : (PageContainerDataRefreshViewModel) -&gt; (Int, Int) -&gt; (), $@convention(method) (Int, Int, @guaranteed PageContainerDataRefreshViewModel) -&gt; () // user: %30
+  %30 = apply %29(%26, %28, %0) : $@convention(method) (Int, Int, @guaranteed PageContainerDataRefreshViewModel) -&gt; ()
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.refreshData() -&gt; ()&apos;
+
+// PageContainerDataRefreshViewModel.loadNextPageData()
+sil hidden @Contents.PageContainerDataRefreshViewModel.loadNextPageData() -&gt; () : $@convention(method) (@guaranteed PageContainerDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %30, %29, %1
+bb0(%0 : $PageContainerDataRefreshViewModel):
+  debug_value %0 : $PageContainerDataRefreshViewModel, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %4
+  %4 = apply %3&lt;Any&gt;(%2) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %24, %21
+  %6 = tuple_extract %4 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %14
+  %8 = string_literal utf8 &quot;PageContainerDataRefreshViewModel loadNextPageData()&quot; // user: %13
+  %9 = integer_literal $Builtin.Word, 52          // user: %13
+  %10 = integer_literal $Builtin.Int1, -1         // user: %13
+  %11 = metatype $@thin String.Type               // user: %13
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %12 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %13
+  %13 = apply %12(%8, %9, %10, %11) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %15
+  %14 = init_existential_addr %7 : $*Any, $String // user: %15
+  store %13 to %14 : $*String                     // id: %15
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %16 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %17
+  %17 = apply %16() : $@convention(thin) () -&gt; @owned String // users: %23, %21
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %18 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %19
+  %19 = apply %18() : $@convention(thin) () -&gt; @owned String // users: %22, %21
+  // function_ref print(_:separator:terminator:)
+  %20 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %21
+  %21 = apply %20(%5, %17, %19) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %19 : $String                     // id: %22
+  release_value %17 : $String                     // id: %23
+  release_value %5 : $Array&lt;Any&gt;                  // id: %24
+  %25 = integer_literal $Builtin.Int64, 2         // user: %26
+  %26 = struct $Int (%25 : $Builtin.Int64)        // user: %30
+  %27 = integer_literal $Builtin.Int64, 1         // user: %28
+  %28 = struct $Int (%27 : $Builtin.Int64)        // user: %30
+  %29 = class_method %0 : $PageContainerDataRefreshViewModel, #PageContainerDataRefreshViewModel.request!1 : (PageContainerDataRefreshViewModel) -&gt; (Int, Int) -&gt; (), $@convention(method) (Int, Int, @guaranteed PageContainerDataRefreshViewModel) -&gt; () // user: %30
+  %30 = apply %29(%26, %28, %0) : $@convention(method) (Int, Int, @guaranteed PageContainerDataRefreshViewModel) -&gt; ()
+  %31 = tuple ()                                  // user: %32
+  return %31 : $()                                // id: %32
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.loadNextPageData() -&gt; ()&apos;
+
+// PageContainerDataRefreshViewModel.request(page:limit:)
+sil hidden @Contents.PageContainerDataRefreshViewModel.request(page: Swift.Int, limit: Swift.Int) -&gt; () : $@convention(method) (Int, Int, @guaranteed PageContainerDataRefreshViewModel) -&gt; () {
+// %0                                             // user: %3
+// %1                                             // user: %4
+// %2                                             // user: %5
+bb0(%0 : $Int, %1 : $Int, %2 : $PageContainerDataRefreshViewModel):
+  debug_value %0 : $Int, let, name &quot;page&quot;, argno 1 // id: %3
+  debug_value %1 : $Int, let, name &quot;limit&quot;, argno 2 // id: %4
+  debug_value %2 : $PageContainerDataRefreshViewModel, let, name &quot;self&quot;, argno 3 // id: %5
+  %6 = integer_literal $Builtin.Word, 1           // user: %8
+  // function_ref _allocateUninitializedArray&lt;A&gt;(_:)
+  %7 = function_ref @Swift._allocateUninitializedArray&lt;A&gt;(Builtin.Word) -&gt; ([A], Builtin.RawPointer) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // user: %8
+  %8 = apply %7&lt;Any&gt;(%6) : $@convention(thin) &lt;&#x3C4;_0_0&gt; (Builtin.Word) -&gt; (@owned Array&lt;&#x3C4;_0_0&gt;, Builtin.RawPointer) // users: %10, %9
+  %9 = tuple_extract %8 : $(Array&lt;Any&gt;, Builtin.RawPointer), 0 // users: %28, %25
+  %10 = tuple_extract %8 : $(Array&lt;Any&gt;, Builtin.RawPointer), 1 // user: %11
+  %11 = pointer_to_address %10 : $Builtin.RawPointer to [strict] $*Any // user: %18
+  %12 = string_literal utf8 &quot;PageContainerDataRefreshViewModel request(page: Int, limit: Int)&quot; // user: %17
+  %13 = integer_literal $Builtin.Word, 64         // user: %17
+  %14 = integer_literal $Builtin.Int1, -1         // user: %17
+  %15 = metatype $@thin String.Type               // user: %17
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %16 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -&gt; Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %17
+  %17 = apply %16(%12, %13, %14, %15) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -&gt; @owned String // user: %19
+  %18 = init_existential_addr %11 : $*Any, $String // user: %19
+  store %17 to %18 : $*String                     // id: %19
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %20 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %21
+  %21 = apply %20() : $@convention(thin) () -&gt; @owned String // users: %27, %25
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %22 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) () -&gt; @owned String // user: %23
+  %23 = apply %22() : $@convention(thin) () -&gt; @owned String // users: %26, %25
+  // function_ref print(_:separator:terminator:)
+  %24 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -&gt; () : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; () // user: %25
+  %25 = apply %24(%9, %21, %23) : $@convention(thin) (@guaranteed Array&lt;Any&gt;, @guaranteed String, @guaranteed String) -&gt; ()
+  release_value %23 : $String                     // id: %26
+  release_value %21 : $String                     // id: %27
+  release_value %9 : $Array&lt;Any&gt;                  // id: %28
+  %29 = tuple ()                                  // user: %30
+  return %29 : $()                                // id: %30
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.request(page: Swift.Int, limit: Swift.Int) -&gt; ()&apos;
+
+// PageContainerDataRefreshViewModel.__deallocating_deinit
+sil hidden @Contents.PageContainerDataRefreshViewModel.__deallocating_deinit : $@convention(method) (@owned PageContainerDataRefreshViewModel) -&gt; () {
+// %0                                             // users: %3, %2, %1
+bb0(%0 : $PageContainerDataRefreshViewModel):
+  debug_value %0 : $PageContainerDataRefreshViewModel, let, name &quot;self&quot;, argno 1 // id: %1
+  %2 = objc_super_method %0 : $PageContainerDataRefreshViewModel, #DefaultDataRefreshViewModel.deinit!deallocator.1.foreign : (DefaultDataRefreshViewModel) -&gt; () -&gt; (), $@convention(objc_method) (DefaultDataRefreshViewModel) -&gt; () // user: %4
+  %3 = upcast %0 : $PageContainerDataRefreshViewModel to $DefaultDataRefreshViewModel // user: %4
+  %4 = apply %2(%3) : $@convention(objc_method) (DefaultDataRefreshViewModel) -&gt; ()
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.__deallocating_deinit&apos;
+
+// PageContainerDataRefreshViewModel.__allocating_init()
+sil hidden @Contents.PageContainerDataRefreshViewModel.__allocating_init() -&gt; Contents.PageContainerDataRefreshViewModel : $@convention(method) (@thick PageContainerDataRefreshViewModel.Type) -&gt; @owned PageContainerDataRefreshViewModel {
+// %0                                             // user: %1
+bb0(%0 : $@thick PageContainerDataRefreshViewModel.Type):
+  %1 = thick_to_objc_metatype %0 : $@thick PageContainerDataRefreshViewModel.Type to $@objc_metatype PageContainerDataRefreshViewModel.Type // user: %2
+  %2 = alloc_ref_dynamic [objc] %1 : $@objc_metatype PageContainerDataRefreshViewModel.Type, $PageContainerDataRefreshViewModel // users: %4, %3
+  %3 = objc_method %2 : $PageContainerDataRefreshViewModel, #PageContainerDataRefreshViewModel.init!initializer.1.foreign : (PageContainerDataRefreshViewModel.Type) -&gt; () -&gt; PageContainerDataRefreshViewModel, $@convention(objc_method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel // user: %4
+  %4 = apply %3(%2) : $@convention(objc_method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel // user: %5
+  return %4 : $PageContainerDataRefreshViewModel  // id: %5
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.__allocating_init() -&gt; Contents.PageContainerDataRefreshViewModel&apos;
+
+// PageContainerDataRefreshViewModel.init()
+sil hidden @Contents.PageContainerDataRefreshViewModel.init() -&gt; Contents.PageContainerDataRefreshViewModel : $@convention(method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel {
+// %0                                             // user: %2
+bb0(%0 : $PageContainerDataRefreshViewModel):
+  %1 = alloc_stack $PageContainerDataRefreshViewModel, let, name &quot;self&quot; // users: %10, %3, %2, %11, %12
+  store %0 to %1 : $*PageContainerDataRefreshViewModel // id: %2
+  %3 = load %1 : $*PageContainerDataRefreshViewModel // user: %4
+  %4 = upcast %3 : $PageContainerDataRefreshViewModel to $DefaultDataRefreshViewModel // users: %5, %7
+  %5 = unchecked_ref_cast %4 : $DefaultDataRefreshViewModel to $PageContainerDataRefreshViewModel // user: %6
+  %6 = objc_super_method %5 : $PageContainerDataRefreshViewModel, #DefaultDataRefreshViewModel.init!initializer.1.foreign : (DefaultDataRefreshViewModel.Type) -&gt; () -&gt; DefaultDataRefreshViewModel, $@convention(objc_method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %7
+  %7 = apply %6(%4) : $@convention(objc_method) (@owned DefaultDataRefreshViewModel) -&gt; @owned DefaultDataRefreshViewModel // user: %8
+  %8 = unchecked_ref_cast %7 : $DefaultDataRefreshViewModel to $PageContainerDataRefreshViewModel // users: %13, %10, %9
+  strong_retain %8 : $PageContainerDataRefreshViewModel // id: %9
+  store %8 to %1 : $*PageContainerDataRefreshViewModel // id: %10
+  destroy_addr %1 : $*PageContainerDataRefreshViewModel // id: %11
+  dealloc_stack %1 : $*PageContainerDataRefreshViewModel // id: %12
+  return %8 : $PageContainerDataRefreshViewModel  // id: %13
+} // end sil function &apos;Contents.PageContainerDataRefreshViewModel.init() -&gt; Contents.PageContainerDataRefreshViewModel&apos;
+
+// @objc PageContainerDataRefreshViewModel.init()
+sil hidden [thunk] @@objc Contents.PageContainerDataRefreshViewModel.init() -&gt; Contents.PageContainerDataRefreshViewModel : $@convention(objc_method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel {
+// %0                                             // user: %2
+bb0(%0 : $PageContainerDataRefreshViewModel):
+  // function_ref PageContainerDataRefreshViewModel.init()
+  %1 = function_ref @Contents.PageContainerDataRefreshViewModel.init() -&gt; Contents.PageContainerDataRefreshViewModel : $@convention(method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel // user: %2
+  %2 = apply %1(%0) : $@convention(method) (@owned PageContainerDataRefreshViewModel) -&gt; @owned PageContainerDataRefreshViewModel // user: %3
+  return %2 : $PageContainerDataRefreshViewModel  // id: %3
+} // end sil function &apos;@objc Contents.PageContainerDataRefreshViewModel.init() -&gt; Contents.PageContainerDataRefreshViewModel&apos;
+
+sil_vtable DefaultDataRefreshViewModel {
+  #DefaultDataRefreshViewModel.refreshData!1: (DefaultDataRefreshViewModel) -&gt; () -&gt; () : @Contents.DefaultDataRefreshViewModel.refreshData() -&gt; ()    // DefaultDataRefreshViewModel.refreshData()
+  #DefaultDataRefreshViewModel.deinit!deallocator.1: @Contents.DefaultDataRefreshViewModel.__deallocating_deinit    // DefaultDataRefreshViewModel.__deallocating_deinit
+}
+
+sil_vtable PageContainerDataRefreshViewModel {
+
+  #DefaultDataRefreshViewModel.refreshData!1: (DefaultDataRefreshViewModel) -&gt; () -&gt; () : @Contents.PageContainerDataRefreshViewModel.refreshData() -&gt; () [override]    // PageContainerDataRefreshViewModel.refreshData()
+
+  #PageContainerDataRefreshViewModel.loadNextPageData!1: (PageContainerDataRefreshViewModel) -&gt; () -&gt; () : @Contents.PageContainerDataRefreshViewModel.loadNextPageData() -&gt; ()    // PageContainerDataRefreshViewModel.loadNextPageData()
+
+  #PageContainerDataRefreshViewModel.request!1: (PageContainerDataRefreshViewModel) -&gt; (Int, Int) -&gt; () : @Contents.PageContainerDataRefreshViewModel.request(page: Swift.Int, limit: Swift.Int) -&gt; ()    // PageContainerDataRefreshViewModel.request(page:limit:)
+
+  #PageContainerDataRefreshViewModel.deinit!deallocator.1: @Contents.PageContainerDataRefreshViewModel.__deallocating_deinit    // PageContainerDataRefreshViewModel.__deallocating_deinit
+}
+
+sil_witness_table hidden DefaultDataRefreshViewModel: DataRefreshViewModelProtocol module Contents {
+  method #DataRefreshViewModelProtocol.refreshData!1: &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Self) -&gt; () -&gt; () : @protocol witness for Contents.DataRefreshViewModelProtocol.refreshData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents    // protocol witness for DataRefreshViewModelProtocol.refreshData() in conformance DefaultDataRefreshViewModel
+  method #DataRefreshViewModelProtocol.loadNextPageData!1: &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Self) -&gt; () -&gt; () : @protocol witness for Contents.DataRefreshViewModelProtocol.loadNextPageData() -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents    // protocol witness for DataRefreshViewModelProtocol.loadNextPageData() in conformance DefaultDataRefreshViewModel
+  method #DataRefreshViewModelProtocol.request!1: &lt;Self where Self : DataRefreshViewModelProtocol&gt; (Self) -&gt; (Int, Int) -&gt; () : @protocol witness for Contents.DataRefreshViewModelProtocol.request(page: Swift.Int, limit: Swift.Int) -&gt; () in conformance Contents.DefaultDataRefreshViewModel : Contents.DataRefreshViewModelProtocol in Contents    // protocol witness for DataRefreshViewModelProtocol.request(page:limit:) in conformance DefaultDataRefreshViewModel
+}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Swift 泛型.html" class="navigation navigation-prev " aria-label="Previous page: Swift 泛型">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Swift.html" class="navigation navigation-next " aria-label="Next page: Swift">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Swift 派发问题 协议和子类到底使用哪个？？？","level":"1.6.2.25.10","depth":4,"next":{"title":"Swift","level":"1.6.2.25.11","depth":4,"path":"apple/iOS/Swift/Swift.md","ref":"apple/iOS/Swift/Swift.md","articles":[]},"previous":{"title":"Swift 泛型","level":"1.6.2.25.9","depth":4,"path":"apple/iOS/Swift/Swift 泛型.md","ref":"apple/iOS/Swift/Swift 泛型.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","anchor-navigation-ex"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/Blankj"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./source/images/donate.png","title":"","button":"赞赏","alipayText":" "},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"Blankj","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"观星","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"观星","language":"zh-hans","gitbook":"3.2.3","description":"每天都是一次迭代，其他变得更好"},"file":{"path":"apple/iOS/Swift/Swift 派发问题 协议和子类到底使用哪个？？？.md","mtime":"2020-11-16T02:01:33.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-21T09:00:50.552Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
